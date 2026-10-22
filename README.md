@@ -12,9 +12,12 @@ Astro static site, Bahasa Indonesia. Dev server: `hijrahcoach-website` (port 432
 ## Halaman
 `/` · `/associate-business-coach` · `/sertifikasi` · `/beasiswa-ahc` · `/group` · `/kontak` · menu **Master Coach** → coachdaru.belajaragile.com
 
+## Tayang sementara (GitHub Pages)
+`.github/workflows/deploy.yml` → repo publik `darudewayanto/hijrahcoach-profile` (noindex), live di https://darudewayanto.github.io/hijrahcoach-profile/ — push ke main = auto deploy.
+
 ## Checklist go-live
 - [ ] Testimoni associate coach & alumni AHC (menyusul dari Coach Daru)
-- [ ] Domain & hosting (kandidat hijrahcoach.co.id) — belum di-deploy ke mana pun
+- [ ] Domain & hosting (kandidat hijrahcoach.co.id) — sementara di GitHub Pages (noindex)
 - [ ] Konfirmasi daftar kota AHC: compro menulis "9 Cities" tapi mencantumkan 10 nama kota
 - [ ] Konfirmasi akreditasi PBHC (compro: "design by Hijrah Coach, accredited by MyBrain International" — posisi kalimat ambigu; saat ini ditulis "Didesain oleh Hijrah Coach")
 - [ ] Mitra AHC (HSI AbdullahRoy, International Open University terlihat di backdrop foto) — tampilkan logo bila diizinkan
