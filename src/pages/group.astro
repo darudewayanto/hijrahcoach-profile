@@ -35,7 +35,7 @@ const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "class-grey"
           <a class="unit" href={x.external ? x.href : u(x.href)} target={x.external ? "_blank" : undefined} rel={x.external ? "noopener" : undefined} data-reveal>
             <div class="u-photo">
               <Img src={photo[unitPhoto[x.key]]} alt="" widths={[500, 900, 1300]} sizes="(min-width: 900px) 45vw, 100vw" class="mono mono-hover" />
-              <span class:list={["u-logo", { dark: x.dark }]}><Img src={brand[x.logo]} alt={x.name} height={x.key === "ahc" ? 40 : 64} /></span>
+              <span class:list={["u-logo", { dark: x.dark }]}><Img src={brand[x.logo]} alt={x.name} height={Math.round(x.logoH * 0.72)} /></span>
             </div>
             <div class="u-text">
               <span class="caps num">0{i + 1}</span>

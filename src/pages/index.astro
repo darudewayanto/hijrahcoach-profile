@@ -6,7 +6,7 @@ import CtaBand from "../components/CtaBand.astro";
 import Accreditation from "../components/Accreditation.astro";
 import ClientWall from "../components/ClientWall.astro";
 import { u } from "../lib/url";
-import { photo, brand } from "../lib/assets";
+import { photo, brand, certImg } from "../lib/assets";
 import { site, wa, stats, certifications, abcBenefits, abcTotal, abcInvestment, ahc, units, masterCredentials, gallery } from "../data/site";
 
 const strip = [
@@ -88,7 +88,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
           </div>
         </div>
         <div class="b-photo">
-          <Img src={photo["sunset-stage"]} alt="Coach Daru memimpin kelas Agile Hijrah Coaching" widths={[640, 1000, 1400, 2000]} sizes="(min-width: 900px) 60vw, 100vw" class="mono" />
+          <Img src={photo["cert3"]} alt="Coach Daru memimpin kelas sertifikasi Certified Hijrah Mind Practitioner" widths={[640, 1000, 1400, 2000]} sizes="(min-width: 900px) 60vw, 100vw" class="mono" />
         </div>
       </div>
     </div>
@@ -112,15 +112,14 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   <section class="section">
     <div class="wrap">
       <div class="grid-head">
-        <h2 class="h-lg">5 Sertifikasi,<br />1 Program</h2>
+        <h2 class="h-lg">5 Sertifikasi<br />Internasional</h2>
         <a class="link-arrow" href={u("/sertifikasi")}>Lihat semua <Icon name="arrow-right" size={14} /></a>
       </div>
       <div class="certs">
         {certifications.map((c, i) => (
           <a class="cert" href={u(`/sertifikasi#${c.code.toLowerCase()}`)} data-reveal style={`transition-delay:${i * 70}ms`}>
             <span class="c-img">
-              <Img src={photo[c.photo]} alt={`Kelas ${c.name}`} widths={[300, 520, 800]} sizes="(min-width: 1000px) 230px, 45vw" class="mono mono-hover" />
-              <span class="c-code">{c.code}</span>
+              <Img src={certImg[c.code.toLowerCase()]} alt={`${c.name}: ${c.credential}, ${c.hours}`} widths={[386]} sizes="(min-width: 1000px) 230px, 45vw" />
             </span>
             <span class="c-name">{c.name}</span>
             <span class="c-meta">{c.credential}</span>
@@ -135,7 +134,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   <section class="section bg-ink on-dark value">
     <div class="wrap v-grid">
       <div class="v-text" data-reveal>
-        <span class="eyebrow">Kenapa ABC</span>
+        <span class="eyebrow">Kenapa Associate Business Coach Program</span>
         <h2 class="h-lg">Nilai<br /><span class="gold">7× lipat</span><br />investasi Anda</h2>
         <p class="lead">Bukan sekadar sertifikasi. Anda mendapatkan sistem, brand, mentor, dan tim yang membantu Anda menjalankan bisnis coaching dari prospek sampai penagihan.</p>
         <div class="btn-row">
@@ -197,7 +196,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
       <div class="units">
         {units.map((x) => (
           <a class:list={["unit", { dark: x.dark }]} href={x.external ? x.href : u(x.href)} target={x.external ? "_blank" : undefined} rel={x.external ? "noopener" : undefined} data-reveal>
-            <span class="u-logo"><Img src={brand[x.logo]} alt={x.name} height={x.key === "ahc" ? 46 : 70} /></span>
+            <span class="u-logo"><Img src={brand[x.logo]} alt={x.name} height={x.logoH} /></span>
             <span class="u-name">{x.name}</span>
             <span class="u-role">{x.role}</span>
             <span class="u-go"><Icon name={x.external ? "arrow-up-right" : "arrow-right"} size={18} /></span>
@@ -365,9 +364,9 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   .grid-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
   .certs { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.9rem, 1.6vw, 1.25rem); }
   .cert { display: grid; gap: 0.3rem; align-content: start; }
-  .c-img { position: relative; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; background: var(--stone); margin-bottom: 0.6rem; }
-  .c-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .cert:hover .c-img :global(img) { transform: scale(1.04); }
+  .c-img { position: relative; aspect-ratio: 386 / 604; margin-bottom: 0.6rem; }
+  .c-img :global(img) { width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s var(--ease), filter 0.5s; filter: drop-shadow(0 14px 22px rgba(21, 20, 19, 0.12)); }
+  .cert:hover .c-img :global(img) { transform: translateY(-4px); filter: drop-shadow(0 22px 30px rgba(21, 20, 19, 0.2)); }
   .c-code {
     position: absolute; top: 0.7rem; right: 0.7rem;
     font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em;
@@ -421,8 +420,8 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   }
   .unit:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -26px rgba(21, 20, 19, 0.45); }
   .unit.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .u-logo { height: 80px; display: flex; align-items: center; margin-bottom: 0.8rem; }
-  .u-logo :global(img) { width: auto; max-width: 100%; object-fit: contain; }
+  .u-logo { height: 96px; display: flex; align-items: center; margin-bottom: 0.9rem; }
+  .u-logo :global(img) { width: auto; max-width: 88%; max-height: 100%; object-fit: contain; }
   .u-name { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
   .u-role { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.45; }
   .unit.dark .u-role { color: rgba(255, 255, 255, 0.65); }

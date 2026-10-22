@@ -33,7 +33,7 @@ export const wa = (topic: WaTopic = "general", extra?: string) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(extra ? `${waMessages[topic]} (${extra})` : waMessages[topic])}`;
 
 export const nav: { href: string; label: string; short?: string; external?: boolean }[] = [
-  { href: "/associate-business-coach", label: "Program ABC" },
+  { href: "/associate-business-coach", label: "Associate Coach" },
   { href: "/sertifikasi", label: "Sertifikasi" },
   { href: "/beasiswa-ahc", label: "Beasiswa AHC" },
   { href: "/group", label: "Hijrah Coach Group", short: "Group" },
@@ -201,11 +201,11 @@ export const ahc = {
 
 // ---------- Hijrah Coach Group ----------
 export const units = [
-  { key: "ahc", name: "Agile Hijrah Coaching", role: "Agile Coaching Certification · Scholarship Program", href: "/beasiswa-ahc", external: false, logo: "ahc", dark: true },
-  { key: "abc", name: "Associate Business Coaching", role: "Internationally Certified & Accredited Public Certification", href: "/associate-business-coach", external: false, logo: "abcp", dark: false },
-  { key: "hade", name: "HADE", role: "Corporate Solution · Agile Transformation", href: site.hadeUrl, external: true, logo: "hade-white", dark: true },
-  { key: "coa", name: "Center of Agility", role: "Agile Program for Youth · Workshop Credential & Talent Center", href: site.coaUrl, external: true, logo: "coa-gold", dark: false },
-  { key: "mybrain", name: "MyBrain Indonesia", role: "Applied-Neuroscience Profile · Agile Transformation", href: site.mybrainUrl, external: true, logo: "mybrain", dark: false },
+  { key: "ahc", name: "Agile Hijrah Coaching", role: "Agile Coaching Certification · Scholarship Program", href: "/beasiswa-ahc", external: false, logo: "ahc", logoH: 50, dark: true },
+  { key: "abc", name: "Associate Business Coaching", role: "Internationally Certified & Accredited Public Certification", href: "/associate-business-coach", external: false, logo: "abcp", logoH: 88, dark: false },
+  { key: "hade", name: "HADE", role: "Corporate Solution · Agile Transformation", href: site.hadeUrl, external: true, logo: "hade-white", logoH: 62, dark: true },
+  { key: "coa", name: "Center of Agility", role: "Agile Program for Youth · Workshop Credential & Talent Center", href: site.coaUrl, external: true, logo: "coa-blue", logoH: 88, dark: false },
+  { key: "mybrain", name: "MyBrain Indonesia", role: "Applied-Neuroscience Profile · Agile Transformation", href: site.mybrainUrl, external: true, logo: "mybrain", logoH: 88, dark: false },
 ];
 
 export const accreditations = [

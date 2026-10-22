@@ -11,3 +11,4 @@ export const photo = toMap(import.meta.glob<{ default: ImageMetadata }>("../asse
 export const brand = toMap(import.meta.glob<{ default: ImageMetadata }>("../assets/brand/*.png", { eager: true }));
 export const clientImg = toMap(import.meta.glob<{ default: ImageMetadata }>("../assets/clients/*.png", { eager: true }));
 export const accredImg = toMap(import.meta.glob<{ default: ImageMetadata }>("../assets/accred/*.png", { eager: true }));
+export const certImg = toMap(import.meta.glob<{ default: ImageMetadata }>("../assets/certs/*.png", { eager: true }));
