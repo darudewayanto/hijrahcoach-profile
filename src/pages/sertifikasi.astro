@@ -1,0 +1,107 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Accreditation from "../components/Accreditation.astro";
+import { u } from "../lib/url";
+import { photo, brand } from "../lib/assets";
+import { wa, certifications } from "../data/site";
+---
+<Base title="5 Sertifikasi Internasional" description="5 sertifikasi coaching Hijrah Coach: ACHC (ICP-ACC, ICAgile), CBHC (ICF Level 1), CHMP (MyBrain Mind Practitioner), PBHC, dan CBHF. Program agile coaching terakreditasi 3 organisasi dunia.">
+  <PageHero
+    eyebrow="Agile Coaching Accredited Certification"
+    title="5 Sertifikasi<br/>Kelas Dunia"
+    lead="The only in Asia & Australia: pemegang akreditasi agile coaching certification dari 3 organisasi besar dunia, ICAgile, ICF, dan MyBrain International."
+    img="demo-white"
+    imgAlt="Demo coaching 1-on-1 di kelas sertifikasi"
+    position="62% 40%"
+  >
+    <a class="btn btn-ink" href={wa("certification")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Tanya jadwal batch</a>
+    <a class="btn btn-line" href={u("/associate-business-coach")}>Ambil semua via ABC</a>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="trio">
+        <div class="t-badge"><Img src={brand.abcp} alt="Agile Certified Hijrah Coach — ICAgile, ICF, MyBrain" width={220} /></div>
+        <div class="t-text">
+          <span class="eyebrow">Satu jalur, tiga akreditasi</span>
+          <h2 class="h-md" style="margin-top:0.8rem">ICP-ACC · ICF Level 1 · MyBrain Practitioner</h2>
+          <p class="lead">Kurikulum dirancang dan diajar langsung oleh Program Developer & Chief of Instructor Hijrah Coach: pemegang MCC (ICF) dan ICE-AC (ICAgile Expert in Agile Coaching).</p>
+        </div>
+      </div>
+
+      <div class="list">
+        {certifications.map((c, i) => (
+          <article class="item" id={c.code.toLowerCase()} data-reveal>
+            <div class="i-photo">
+              <Img src={photo[c.photo]} alt={`Kelas ${c.name}`} widths={[500, 800, 1200]} sizes="(min-width: 900px) 40vw, 100vw" class="mono mono-hover" />
+              <span class="i-num">0{i + 1}</span>
+            </div>
+            <div class="i-text">
+              <p class="caps code">{c.code}</p>
+              <h2 class="h-md">{c.name}</h2>
+              <p class="cred">{c.credential}</p>
+              <p class="lead">{c.summary}</p>
+              <ul class="facts">
+                <li><Icon name="clock" size={16} /><span><small>Durasi</small>{c.hours}</span></li>
+                <li><Icon name={c.mode === "Online" ? "globe" : "pin"} size={16} /><span><small>Format</small>{c.mode}</span></li>
+                <li><Icon name="shield" size={16} /><span><small>Akreditasi</small>{c.accreditor}</span></li>
+              </ul>
+              <div class="btn-row">
+                <a class="btn btn-ink" href={wa("certification", c.code)} target="_blank" rel="noopener">Daftar {c.code} <Icon name="arrow-right" size={16} /></a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="note-box">
+        <Icon name="gift" size={28} />
+        <div>
+          <h2 class="h-sm">Hemat lebih banyak lewat Associate Business Coach</h2>
+          <p class="muted">5 bundling certification bernilai Rp70.500.000 sudah termasuk dalam program ABC, plus akses re-take semua sertifikasi, mentoring Master Coach, dan support bisnis coaching.</p>
+        </div>
+        <a class="btn btn-ink" href={u("/associate-business-coach")}>Lihat program ABC <Icon name="arrow-right" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <Accreditation />
+  <CtaBand />
+</Base>
+
+<style>
+  .trio { display: grid; gap: 2rem; align-items: center; margin-bottom: clamp(3rem, 6vw, 5rem); }
+  .t-badge :global(img) { width: clamp(150px, 18vw, 220px); height: auto; }
+  @media (min-width: 800px) { .trio { grid-template-columns: auto 1fr; gap: 3.5rem; } }
+
+  .list { display: grid; gap: clamp(3rem, 6vw, 5rem); }
+  .item { display: grid; gap: 2rem; align-items: center; scroll-margin-top: 100px; }
+  .i-photo { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3; }
+  .i-photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .i-num { position: absolute; left: 1rem; bottom: 0.5rem; font-family: var(--serif); font-weight: 800; font-size: clamp(3rem, 7vw, 5rem); color: rgba(248, 245, 239, 0.92); line-height: 1; }
+  .i-text { display: grid; gap: 0.9rem; justify-items: start; }
+  .code { color: var(--gold-deep); font-size: 0.8rem; }
+  .cred { font-weight: 700; color: var(--ink-soft); }
+  .facts { display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding: 1rem 0; border-block: 1px solid var(--line); width: 100%; }
+  .facts li { display: flex; gap: 0.6rem; align-items: center; }
+  .facts :global(svg) { color: var(--gold-deep); }
+  .facts span { display: grid; font-weight: 700; font-size: 0.92rem; line-height: 1.3; }
+  .facts small { font-size: 0.64rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
+  @media (min-width: 900px) {
+    .item { grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .item:nth-child(even) .i-photo { order: 2; }
+  }
+
+  .note-box { display: grid; gap: 1.2rem; align-items: center; padding: clamp(1.4rem, 3vw, 2rem); border-radius: 16px; border: 1px solid rgba(150, 115, 79, 0.4); background: rgba(187, 149, 110, 0.08); }
+  .note-box > :global(svg) { color: var(--gold-deep); }
+  .note-box p { margin-top: 0.4rem; }
+  @media (min-width: 900px) { .note-box { grid-template-columns: auto 1fr auto; gap: 2rem; } }
+</style>

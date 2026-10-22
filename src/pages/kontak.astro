@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/Base.astro";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import { photo } from "../lib/assets";
+import { site, wa, type WaTopic } from "../data/site";
+
+const topics: { topic: WaTopic; title: string; text: string }[] = [
+  { topic: "abc", title: "Daftar Associate Business Coach", text: "Info jadwal, akad, dan term of payment program ABC." },
+  { topic: "certification", title: "Sertifikasi internasional", text: "ACHC, CBHC, CHMP, PBHC, atau CBHF: jadwal batch berikutnya." },
+  { topic: "ahc", title: "Beasiswa Agile Hijrah Coaching", text: "Untuk ustadz/ah & pemimpin lembaga dakwah, pendidikan, kemanusiaan." },
+  { topic: "ahcPartner", title: "Buka chapter AHC", text: "Lembaga Anda ingin menjadi tuan rumah chapter AHC." },
+  { topic: "corporate", title: "Corporate & in-house", text: "Coaching, agile transformation, dan program korporasi." },
+];
+---
+<Base title="Kontak" description="Hubungi Hijrah Coach via WhatsApp +62 811 1881 877 atau email salam@hijrahcoach.co.id untuk program ABC, sertifikasi internasional, beasiswa AHC, dan kerja sama korporasi.">
+  <section class="section">
+    <div class="wrap grid">
+      <div>
+        <p class="caps eb">Kontak</p>
+        <h1 class="h-xl">Mari<br />Bicara</h1>
+        <p class="lead" style="margin:1.4rem 0 2rem">Pilih topik, dan pesan WhatsApp Anda akan terisi otomatis. Tim Hijrah Coach siap membantu.</p>
+        <ul class="topics">
+          {topics.map((t) => (
+            <li>
+              <a href={wa(t.topic)} target="_blank" rel="noopener">
+                <Icon name="whatsapp" size={22} />
+                <span><b>{t.title}</b><small>{t.text}</small></span>
+                <Icon name="arrow-up-right" size={18} />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="direct">
+          <a href={wa("general")} target="_blank" rel="noopener"><Icon name="phone" size={18} /> {site.phoneDisplay}</a>
+          <a href={`mailto:${site.email}`}><Icon name="mail" size={18} /> {site.email}</a>
+        </div>
+      </div>
+      <div class="photo">
+        <Img src={photo["portrait-stage"]} alt="Coach Daru di kelas Agile Hijrah Coaching" widths={[500, 900, 1124]} sizes="(min-width: 900px) 40vw, 100vw" class="mono" loading="eager" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .grid { display: grid; gap: 3rem; align-items: start; }
+  .eb { font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 1rem; }
+  .topics { display: grid; border-top: 1px solid var(--line); }
+  .topics a { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1.1rem 0.4rem; border-bottom: 1px solid var(--line); transition: background 0.25s, padding 0.25s; }
+  .topics a:hover { background: var(--paper); padding-inline: 1rem; }
+  .topics a > :global(svg:first-child) { color: #1f8f4e; }
+  .topics span { display: grid; }
+  .topics b { font-family: var(--serif); font-size: 1.2rem; }
+  .topics small { font-size: 0.86rem; color: var(--ink-soft); }
+  .direct { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; font-weight: 700; }
+  .direct a { display: inline-flex; gap: 0.5rem; align-items: center; }
+  .direct :global(svg) { color: var(--gold-deep); }
+  .photo :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 35%; border-radius: 20px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; } .photo { position: sticky; top: 110px; } }
+</style>

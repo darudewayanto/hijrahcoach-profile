@@ -1,0 +1,215 @@
+---
+import Base from "../layouts/Base.astro";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { u } from "../lib/url";
+import { photo, brand } from "../lib/assets";
+import { wa, ahc } from "../data/site";
+
+const who = [
+  { icon: "mic", title: "Ustadz & ustadzah", text: "Para dai dan pengajar yang membina jamaah dan santri." },
+  { icon: "building", title: "Pimpinan pondok & sekolah", text: "Kepala sekolah, mudir, dan pengelola lembaga pendidikan Islam." },
+  { icon: "users", title: "Pemimpin lembaga dakwah", text: "Pengurus organisasi dakwah, kajian, dan komunitas umat." },
+  { icon: "heart", title: "Aktivis kemanusiaan", text: "Pimpinan organisasi sosial, relawan, dan filantropi." },
+];
+
+const flow = [
+  { title: "Daftar via WhatsApp", text: "Kirim nama, lembaga, dan kota Anda. Tim AHC mengirim info batch dan syarat beasiswa." },
+  { title: "Seleksi & konfirmasi", text: "Prioritas bagi ustadz/ah dan pemimpin lembaga dakwah, pendidikan, dan kemanusiaan." },
+  { title: "Ikuti kelas AHC", text: "Workshop agile coaching bersama Master Coach, tatap muka di chapter kota Anda." },
+  { title: "Jadi penggerak chapter", text: "Alumni melanjutkan ke kredensial internasional dan menggerakkan chapter di daerahnya." },
+];
+
+const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "handshake", "class-plaid"];
+---
+<Base title="Beasiswa Agile Hijrah Coaching (AHC)" description="Agile Hijrah Coaching (AHC): gerakan 1.000 beasiswa agile coaching certification untuk ustadz/ah dan pemimpin organisasi dakwah, pendidikan, dan kemanusiaan. 350+ lulusan, 30+ batch, 9 chapter.">
+  <!-- Dark hero for the movement -->
+  <section class="hero on-dark">
+    <Img src={photo["class-wide"]} alt="" widths={[800, 1400, 2000]} sizes="100vw" class="mono bg" loading="eager" />
+    <div class="wrap h-inner">
+      <Img src={brand.ahc} alt="Agile Hijrah Coaching Certification" width={520} class="logo" loading="eager" />
+      <p class="caps sub">1.000 Scholarship Movement</p>
+      <h1 class="h-lg">Beasiswa agile coaching<br />untuk para penggerak umat</h1>
+      <p class="lead">{ahc.mission}</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href={wa("ahc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar beasiswa</a>
+        <a class="btn btn-line" href={wa("ahcPartner")} target="_blank" rel="noopener">Buka chapter di kota Anda</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-wrap">
+    <div class="wrap">
+      <ul class="stats">
+        {ahc.stats.map((s) => <li><b>{s.value}</b><span>{s.label}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section">
+    <div class="wrap about">
+      <div>
+        <span class="eyebrow">About the program</span>
+        <h2 class="h-lg" style="margin:1rem 0 1.4rem">Agile Coaching<br />Certification Program</h2>
+        <p class="lead">Untuk {ahc.audience.toLowerCase()} Agile Hijrah Coaching membawa 15 tahun pengalaman agile coaching Hijrah Coach ke pondok, sekolah, dan lembaga dakwah di seluruh Indonesia.</p>
+        <div class="acc">
+          <span class="caps">Kurikulum mengacu standar</span>
+          <div>{ahc.accreditors.map((a) => <span>{a}</span>)}</div>
+        </div>
+      </div>
+      <div class="about-photo">
+        <Img src={photo["sunset-stage"]} alt="Coach Daru memimpin kelas AHC" widths={[600, 1000, 1400]} sizes="(min-width: 900px) 50vw, 100vw" class="mono" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Who -->
+  <section class="section bg-paper">
+    <div class="wrap">
+      <div class="head center">
+        <span class="eyebrow">Untuk siapa</span>
+        <h2 class="h-lg">Penerima Beasiswa</h2>
+      </div>
+      <ul class="who">
+        {who.map((w) => (
+          <li data-reveal><Icon name={w.icon} size={30} /><h3>{w.title}</h3><p class="muted">{w.text}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="section">
+    <div class="wrap out-grid">
+      <div class="out-photos">
+        <Img src={photo["demo-white"]} alt="Demo coaching bersama ustadz peserta AHC" widths={[500, 900]} sizes="(min-width: 900px) 25vw, 50vw" class="mono a" />
+        <Img src={photo["group-five"]} alt="Coach Daru bersama para asatidz" widths={[500, 900]} sizes="(min-width: 900px) 25vw, 50vw" class="mono b" />
+      </div>
+      <div>
+        <span class="eyebrow">Yang Anda bawa pulang</span>
+        <h2 class="h-lg" style="margin:1rem 0 2rem">Hasil<br />Program</h2>
+        <ul class="outs">
+          {ahc.outcomes.map((o) => (
+            <li><Icon name="check" size={18} /><div><h3>{o.title}</h3><p class="muted">{o.text}</p></div></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapters -->
+  <section class="section-sm bg-ink on-dark">
+    <div class="wrap chapters">
+      <div>
+        <span class="eyebrow">9 Chapter · 30+ batch</span>
+        <h2 class="h-md" style="margin-top:0.9rem">Sudah hadir di</h2>
+      </div>
+      <ul class="cities">{ahc.cities.map((c) => <li><Icon name="pin" size={14} /> {c}</li>)}</ul>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <span class="eyebrow">Alur pendaftaran</span>
+          <h2 class="h-lg" style="margin-top:1rem">Cara Mendaftar</h2>
+        </div>
+        <p class="lead">Kuota beasiswa dibagi per batch dan per chapter. Daftarkan diri atau lembaga Anda lebih awal.</p>
+      </div>
+      <ol class="flow">
+        {flow.map((f, i) => (
+          <li data-reveal><span class="num">0{i + 1}</span><h3>{f.title}</h3><p class="muted">{f.text}</p></li>
+        ))}
+      </ol>
+      <div class="btn-row center">
+        <a class="btn btn-ink" href={wa("ahc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar beasiswa AHC</a>
+        <a class="btn btn-line" href={wa("ahcPartner")} target="_blank" rel="noopener">Ajukan chapter lembaga</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mosaic -->
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="mosaic">
+        {pics.map((p, i) => (
+          <Img src={photo[p]} alt="Dokumentasi kegiatan Agile Hijrah Coaching" widths={[400, 800, 1200]} sizes="(min-width: 900px) 33vw, 50vw" class:list={["mono mono-hover", `m${i}`]} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Ingin jadi coach profesional setelah AHC?" text="Alumni AHC dapat melanjutkan ke Associate Business Coach Program: 5 sertifikasi internasional, mentoring Master Coach, dan support bisnis coaching." />
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; background: var(--ink); min-height: clamp(560px, 80vh, 760px); display: grid; align-items: center; }
+  .hero :global(.bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.32; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21, 20, 19, 0.4), var(--ink) 92%); }
+  .h-inner { position: relative; z-index: 2; display: grid; justify-items: center; text-align: center; gap: 1.2rem; padding-block: 4rem 5rem; }
+  .h-inner :global(.logo) { width: min(520px, 86%); height: auto; }
+  .sub { color: var(--gold-2); }
+  .h-inner .lead { margin-inline: auto; }
+  .h-inner .btn-row { justify-content: center; }
+
+  .stats-wrap { margin-top: -3rem; position: relative; z-index: 3; }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -36px rgba(21, 20, 19, 0.5); }
+  .stats li { display: grid; gap: 0.2rem; padding: 1.4rem 1.2rem; background: var(--paper); }
+  .stats b { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; }
+  .stats span { font-size: 0.8rem; color: var(--ink-soft); }
+  .stats li:first-child { grid-column: 1 / -1; background: var(--gold); }
+  .stats li:first-child span { color: var(--ink); }
+  @media (min-width: 900px) { .stats { grid-template-columns: repeat(5, 1fr); } .stats li:first-child { grid-column: auto; } }
+
+  .about { display: grid; gap: 3rem; align-items: center; }
+  .acc { display: grid; gap: 0.7rem; margin-top: 2rem; }
+  .acc .caps { font-size: 0.7rem; color: var(--grey); }
+  .acc div { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .acc div span { padding: 0.5rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.06em; }
+  .about-photo :global(img) { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 18px; }
+  @media (min-width: 900px) { .about { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+
+  .who { display: grid; gap: 1rem; }
+  .who li { display: grid; gap: 0.6rem; padding: 1.6rem; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+  .who :global(svg) { color: var(--gold-deep); margin-bottom: 0.4rem; }
+  .who h3 { font-size: 1.3rem; }
+  .who p { font-size: 0.9rem; }
+  @media (min-width: 640px) { .who { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .who { grid-template-columns: repeat(4, 1fr); } }
+
+  .out-grid { display: grid; gap: 3rem; align-items: center; }
+  .out-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .out-photos :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 16px; }
+  .out-photos :global(.b) { margin-top: 3rem; }
+  .outs { display: grid; gap: 1.3rem; }
+  .outs li { display: flex; gap: 0.9rem; }
+  .outs :global(svg) { flex: none; margin-top: 0.3rem; color: var(--gold-deep); }
+  .outs h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+  .outs p { font-size: 0.92rem; }
+  @media (min-width: 900px) { .out-grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+
+  .chapters { display: grid; gap: 1.6rem; align-items: center; }
+  .cities { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .cities li { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.05rem; border-radius: 999px; border: 1px solid var(--line-dark); font-weight: 700; font-size: 0.9rem; }
+  .cities :global(svg) { color: var(--gold-2); }
+  @media (min-width: 900px) { .chapters { grid-template-columns: 0.7fr 1.3fr; } }
+
+  .flow { display: grid; gap: 1rem; margin-bottom: 2.4rem; counter-reset: s; }
+  .flow li { display: grid; gap: 0.6rem; padding: 1.6rem; border-top: 2px solid var(--ink); background: var(--paper); border-radius: 0 0 14px 14px; }
+  .flow .num { font-family: var(--serif); font-weight: 800; font-size: 2.2rem; color: var(--gold-deep); line-height: 1; }
+  .flow h3 { font-size: 1.25rem; }
+  .flow p { font-size: 0.9rem; }
+  .btn-row.center { justify-content: center; }
+  @media (min-width: 640px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .flow { grid-template-columns: repeat(4, 1fr); } }
+
+  .mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .mosaic :global(img) { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; aspect-ratio: 4 / 3; }
+  .mosaic :global(.m0) { grid-row: span 2; aspect-ratio: auto; object-position: 50% 30%; }
+  @media (min-width: 900px) { .mosaic { grid-template-columns: repeat(3, 1fr); } }
+</style>

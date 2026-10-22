@@ -1,0 +1,37 @@
+---
+import Img from "./Img.astro";
+import { photo } from "../lib/assets";
+
+interface Props { eyebrow: string; title: string; lead: string; img: string; imgAlt: string; position?: string }
+const { eyebrow, title, lead, img, imgAlt, position = "50% 35%" } = Astro.props;
+---
+<section class="ph">
+  <div class="wrap">
+    <div class="ph-panel">
+      <div class="ph-text" data-reveal>
+        <p class="caps eb">{eyebrow}</p>
+        <h1 class="h-xl" set:html={title} />
+        <p class="lead">{lead}</p>
+        <div class="btn-row"><slot /></div>
+      </div>
+      <div class="ph-photo">
+        <Img src={photo[img]} alt={imgAlt} widths={[640, 1000, 1400, 2000]} sizes="(min-width: 900px) 62vw, 100vw" loading="eager" class="mono" style={`object-position:${position}`} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ph { padding-top: clamp(1rem, 2vw, 1.5rem); }
+  .ph-panel { position: relative; display: grid; overflow: hidden; border-radius: 20px; background: linear-gradient(100deg, var(--paper), var(--cream-2)); }
+  .ph-text { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
+  .eb { font-size: 0.78rem; color: var(--ink-soft); }
+  .ph-photo { position: relative; min-height: 280px; }
+  .ph-photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 900px) {
+    .ph-panel { min-height: 540px; grid-template-columns: 1.05fr 0.95fr; align-items: center; }
+    .ph-text { max-width: 640px; }
+    .ph-photo { position: absolute; inset: 0 0 0 44%; }
+    .ph-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.7) 22%, transparent 50%); }
+  }
+</style>

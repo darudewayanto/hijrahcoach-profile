@@ -1,0 +1,34 @@
+---
+import Icon from "./Icon.astro";
+import { wa } from "../data/site";
+---
+<a class="fab" href={wa("general")} target="_blank" rel="noopener" aria-label="Chat dengan Hijrah Coach via WhatsApp">
+  <Icon name="whatsapp" size={22} />
+  <span>Tanya via WhatsApp</span>
+</a>
+
+<style>
+  .fab {
+    position: fixed;
+    right: clamp(0.9rem, 2vw, 1.5rem);
+    bottom: clamp(0.9rem, 2vw, 1.5rem);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    border: 1px solid rgba(187, 149, 110, 0.55);
+    box-shadow: 0 16px 34px -14px rgba(21, 20, 19, 0.6);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    transition: transform 0.25s var(--ease), background 0.25s;
+  }
+  .fab :global(svg) { color: #3ddc84; }
+  .fab:hover { transform: translateY(-2px); background: var(--charcoal); }
+  .fab span { display: none; padding-right: 0.35rem; }
+  @media (min-width: 720px) { .fab span { display: inline; } .fab { padding: 0.75rem 1.1rem 0.75rem 0.9rem; } }
+</style>

@@ -1,0 +1,27 @@
+---
+import Img from "./Img.astro";
+import { clientImg } from "../lib/assets";
+import { clients } from "../data/site";
+---
+<section class="section-sm">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Dipercaya oleh</span>
+      <h2 class="h-md">Kementerian, BUMN & perusahaan global</h2>
+    </div>
+    <ul class="wall">
+      {clients.filter((c) => clientImg[c]).map((c) => (
+        <li><Img src={clientImg[c]} alt={c.replace(/-/g, " ")} height={44} /></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .wall { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 1rem; align-items: center; }
+  .wall li { display: grid; place-items: center; height: 64px; }
+  .wall :global(img) { max-height: 44px; width: auto; max-width: 120px; object-fit: contain; filter: grayscale(1) contrast(0.9); opacity: 0.62; mix-blend-mode: multiply; transition: filter 0.4s, opacity 0.4s; }
+  .wall li:hover :global(img) { filter: none; opacity: 1; }
+  @media (min-width: 720px) { .wall { grid-template-columns: repeat(5, 1fr); } }
+  @media (min-width: 1100px) { .wall { grid-template-columns: repeat(9, 1fr); } }
+</style>

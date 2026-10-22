@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url";
+---
+<Base title="Halaman tidak ditemukan">
+  <section class="section">
+    <div class="wrap nf">
+      <p class="caps">Error 404</p>
+      <h1 class="h-xl">Halaman<br />tidak ditemukan</h1>
+      <p class="lead">Halaman yang Anda cari mungkin sudah dipindahkan.</p>
+      <a class="btn btn-ink" href={u("/")}>Kembali ke beranda <Icon name="arrow-right" size={16} /></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { display: grid; gap: 1.4rem; justify-items: start; min-height: 50vh; align-content: center; }
+</style>

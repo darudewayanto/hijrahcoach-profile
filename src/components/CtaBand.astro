@@ -1,0 +1,39 @@
+---
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import { photo } from "../lib/assets";
+import { wa } from "../data/site";
+import { u } from "../lib/url";
+
+interface Props { title?: string; text?: string }
+const {
+  title = "Mulai Hijrah Anda sebagai Professional Coach",
+  text = "Konsultasikan program Associate Business Coach, sertifikasi internasional, atau beasiswa AHC langsung dengan tim kami via WhatsApp.",
+} = Astro.props;
+---
+<section class="section-sm">
+  <div class="wrap">
+    <div class="band on-dark">
+      <Img src={photo["portrait-stage"]} alt="" widths={[600, 1000]} sizes="(min-width: 900px) 40vw, 100vw" class="mono bg" />
+      <div class="txt">
+        <span class="eyebrow">Daftar sekarang</span>
+        <h2 class="h-lg band-title">{title}</h2>
+        <p class="lead">{text}</p>
+        <div class="btn-row">
+          <a class="btn btn-gold" href={wa("abc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar ABC</a>
+          <a class="btn btn-line" href={wa("certification")} target="_blank" rel="noopener">Info sertifikasi</a>
+          <a class="btn btn-line" href={u("/beasiswa-ahc")}>Beasiswa AHC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band { position: relative; overflow: hidden; border-radius: 22px; background: var(--ink); min-height: 420px; display: grid; align-items: center; }
+  .band :global(.bg) { position: absolute; right: 0; top: 0; height: 100%; width: 55%; object-fit: cover; object-position: 50% 20%; opacity: 0.55; }
+  .band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 35%, rgba(21, 20, 19, 0.75) 60%, rgba(21, 20, 19, 0.2)); }
+  .band-title { font-size: clamp(2rem, 4vw, 3.3rem); }
+  .txt { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); max-width: 760px; }
+  @media (max-width: 700px) { .band :global(.bg) { width: 100%; opacity: 0.3; } }
+</style>

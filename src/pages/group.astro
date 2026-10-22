@@ -1,0 +1,149 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Accreditation from "../components/Accreditation.astro";
+import ClientWall from "../components/ClientWall.astro";
+import { u } from "../lib/url";
+import { photo, brand } from "../lib/assets";
+import { site, wa, units, stats, countries, partnerCountries, journey, masterCredentials } from "../data/site";
+
+const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "class-grey", hade: "summit-panel", coa: "mou", mybrain: "flipchart" };
+---
+<Base title="Hijrah Coach Group" description="Hijrah Coach Group: 5 core business unit — Agile Hijrah Coaching, Associate Business Coaching, HADE, Center of Agility, dan MyBrain Indonesia. 28 firma, 180 associate coach, 1.800+ lulusan di 5 negara.">
+  <PageHero
+    eyebrow="Hijrah Coach .Group"
+    title="Satu Group,<br/>Lima Kekuatan"
+    lead="Business subsidiaries & competencies yang saling menguatkan: dari sertifikasi coach dan beasiswa umat, sampai agile transformation korporasi, kampus, dan applied-neuroscience."
+    img="summit"
+    imgAlt="Hijrah Coaching Summit bersama para coach"
+  >
+    <a class="btn btn-ink" href="#unit">Lihat 5 unit <Icon name="arrow-right" size={16} /></a>
+    <a class="btn btn-line" href={wa("corporate")} target="_blank" rel="noopener">Kerja sama korporasi</a>
+  </PageHero>
+
+  <section class="section" id="unit">
+    <div class="wrap">
+      <div class="head center">
+        <span class="eyebrow">5 Core Business Unit</span>
+        <h2 class="h-lg">Business Subsidiaries<br />& Competencies</h2>
+      </div>
+      <div class="units">
+        {units.map((x, i) => (
+          <a class="unit" href={x.external ? x.href : u(x.href)} target={x.external ? "_blank" : undefined} rel={x.external ? "noopener" : undefined} data-reveal>
+            <div class="u-photo">
+              <Img src={photo[unitPhoto[x.key]]} alt="" widths={[500, 900, 1300]} sizes="(min-width: 900px) 45vw, 100vw" class="mono mono-hover" />
+              <span class:list={["u-logo", { dark: x.dark }]}><Img src={brand[x.logo]} alt={x.name} height={x.key === "ahc" ? 40 : 64} /></span>
+            </div>
+            <div class="u-text">
+              <span class="caps num">0{i + 1}</span>
+              <h3 class="h-md">{x.name}</h3>
+              <p class="muted">{x.role}</p>
+              <span class="link-arrow">{x.external ? "Kunjungi website" : "Lihat program"} <Icon name={x.external ? "arrow-up-right" : "arrow-right"} size={14} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ink on-dark">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <span class="eyebrow">FOC & ABC Program</span>
+          <h2 class="h-lg" style="margin-top:1rem">Firm Owner Coach &<br />Associate Business Coach</h2>
+        </div>
+        <p class="lead">Jaringan firma dan associate coach yang menjalankan standar, sistem, dan brand Hijrah Coach di berbagai kota dan negara.</p>
+      </div>
+      <ul class="big-stats">
+        {stats.map((s) => <li><b>{s.value}</b><span>{s.label}</span></li>)}
+      </ul>
+      <div class="presence">
+        <div><span class="caps">Kehadiran</span><p>{countries.join(" · ")}</p></div>
+        <div><span class="caps">Subsidiaries & strategic partnership</span><p>{partnerCountries.join(" · ")}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <span class="eyebrow">Our journey</span>
+          <h2 class="h-lg" style="margin-top:1rem">15 Tahun<br />Perjalanan</h2>
+        </div>
+        <p class="lead">Dari business coach UMKM di 2011 menjadi firm-based coaching company dengan akreditasi internasional dan platform AI coaching.</p>
+      </div>
+      <ol class="journey">
+        {journey.map((j) => (
+          <li data-reveal>
+            <span class="period">{j.period}</span>
+            <ul>{j.items.map((t) => <li>{t}</li>)}</ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-sm bg-paper">
+    <div class="wrap mc">
+      <Img src={photo["daru-portrait"]} alt="Daru Dewayanto" widths={[300, 600]} sizes="260px" class="mc-img" />
+      <div>
+        <p class="caps eb">Founder, CEO & Master Coach</p>
+        <h2 class="h-md">Daru Dewayanto, MCM, MCC, ICE-AC</h2>
+        <ul class="creds">{masterCredentials.map((c) => <li>{c}</li>)}</ul>
+        <a class="btn btn-ink" href={site.masterCoachUrl} target="_blank" rel="noopener">Profil Master Coach <Icon name="arrow-up-right" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <Accreditation />
+  <ClientWall />
+  <CtaBand />
+</Base>
+
+<style>
+  .units { display: grid; gap: clamp(1.2rem, 2vw, 1.6rem); }
+  .unit { display: grid; border-radius: 18px; overflow: hidden; background: #fff; border: 1px solid var(--line); transition: transform 0.35s var(--ease), box-shadow 0.35s; }
+  .unit:hover { transform: translateY(-4px); box-shadow: 0 28px 48px -30px rgba(21, 20, 19, 0.45); }
+  .u-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+  .u-photo > :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .u-logo { position: absolute; left: 1rem; bottom: 1rem; padding: 0.7rem 1rem; border-radius: 12px; background: rgba(248, 245, 239, 0.94); display: flex; align-items: center; }
+  .u-logo.dark { background: rgba(21, 20, 19, 0.88); }
+  .u-logo :global(img) { width: auto; }
+  .u-text { display: grid; gap: 0.6rem; justify-items: start; padding: 1.5rem 1.6rem 1.8rem; }
+  .num { color: var(--gold-deep); font-size: 0.74rem; }
+  .u-text .link-arrow { margin-top: 0.6rem; }
+  @media (min-width: 900px) {
+    .units { grid-template-columns: repeat(6, 1fr); }
+    .unit { grid-column: span 2; }
+    .unit:nth-child(1), .unit:nth-child(2) { grid-column: span 3; }
+  }
+
+  .big-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; padding: 2rem 0; border-block: 1px solid var(--line-dark); }
+  .big-stats li { display: grid; }
+  .big-stats b { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.95; color: var(--gold-2); }
+  .big-stats span { font-size: 0.86rem; color: rgba(255, 255, 255, 0.65); }
+  .presence { display: grid; gap: 1.5rem; margin-top: 2rem; }
+  .presence .caps { font-size: 0.68rem; color: var(--gold-2); }
+  .presence p { margin-top: 0.4rem; font-family: var(--serif); font-size: 1.25rem; color: rgba(255, 255, 255, 0.88); }
+  @media (min-width: 900px) { .big-stats { grid-template-columns: repeat(4, 1fr); } .presence { grid-template-columns: 1fr 1fr; } }
+
+  .journey { display: grid; gap: 1rem; }
+  .journey > li { display: grid; gap: 1rem; padding: 1.8rem; border-radius: 16px; background: var(--paper); border: 1px solid var(--line); }
+  .period { font-family: var(--serif); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--gold-deep); }
+  .journey ul { display: grid; gap: 0.7rem; }
+  .journey ul li { position: relative; padding-left: 1.1rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .journey ul li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 6px; height: 1px; background: var(--gold-deep); }
+  @media (min-width: 900px) { .journey { grid-template-columns: repeat(3, 1fr); } }
+
+  .mc { display: grid; gap: 2rem; align-items: center; }
+  .mc :global(.mc-img) { width: 220px; height: auto; border-radius: 50%; background: var(--stone); aspect-ratio: 1; object-fit: cover; object-position: 50% 10%; }
+  .eb { font-size: 0.74rem; color: var(--gold-deep); margin-bottom: 0.6rem; }
+  .creds { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.2rem 0 1.6rem; }
+  .creds li { font-size: 0.78rem; font-weight: 700; padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid var(--line); background: #fff; }
+  @media (min-width: 800px) { .mc { grid-template-columns: auto 1fr; gap: 3rem; } }
+</style>

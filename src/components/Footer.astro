@@ -1,0 +1,64 @@
+---
+import { u } from "../lib/url";
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import { brand } from "../lib/assets";
+import { site, wa, units, countries } from "../data/site";
+const year = new Date().getFullYear();
+---
+<footer class="footer on-dark">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <Img src={brand["hijrah-hor-white"]} alt="Hijrah Coach" width={240} />
+        <p class="caps tag">Agile specialists for your<br />sustainable business.</p>
+        <p class="muted-d">Firma business coaching terakreditasi internasional. 28 firma, 180 associate coach, dan 1.800+ lulusan di {countries.join(", ").replace(/, ([^,]*)$/, " & $1")}.</p>
+      </div>
+
+      <div class="col">
+        <h3 class="caps">Program</h3>
+        <a href={u("/associate-business-coach")}>Associate Business Coach</a>
+        <a href={u("/sertifikasi")}>5 Sertifikasi Internasional</a>
+        <a href={u("/beasiswa-ahc")}>Beasiswa Agile Hijrah Coaching</a>
+        <a href={u("/kontak")}>Kontak</a>
+      </div>
+
+      <div class="col">
+        <h3 class="caps">Hijrah Coach Group</h3>
+        {units.filter((x) => x.external).map((x) => (
+          <a href={x.href} target="_blank" rel="noopener">{x.name} <Icon name="arrow-up-right" size={13} /></a>
+        ))}
+        <a href={site.masterCoachUrl} target="_blank" rel="noopener">Master Coach Daru <Icon name="arrow-up-right" size={13} /></a>
+        <a href={u("/group")}>Tentang Group</a>
+      </div>
+
+      <div class="col">
+        <h3 class="caps">Hubungi</h3>
+        <a href={wa("general")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> {site.phoneDisplay}</a>
+        <a href={`mailto:${site.email}`}><Icon name="mail" size={16} /> {site.email}</a>
+        <a class="btn btn-gold btn-sm wa" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC <Icon name="arrow-right" size={14} /></a>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>© {year} Hijrah Coach Group. Semua hak dilindungi.</span>
+      <span>Terakreditasi ICF · ICAgile · MyBrain International</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--ink); padding: clamp(3.5rem, 7vw, 5.5rem) 0 2rem; }
+  .top { display: grid; gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--line-dark); }
+  .about { display: grid; gap: 1.1rem; max-width: 380px; }
+  .about :global(img) { width: 230px; height: auto; }
+  .tag { color: var(--gold-2); font-size: 0.78rem; }
+  .muted-d { color: rgba(255, 255, 255, 0.6); font-size: 0.92rem; }
+  .col { display: grid; align-content: start; gap: 0.7rem; }
+  .col h3 { color: var(--gold-2); font-size: 0.74rem; margin-bottom: 0.3rem; }
+  .col a:not(.btn) { display: inline-flex; align-items: center; gap: 0.45rem; color: rgba(255, 255, 255, 0.78); font-size: 0.93rem; transition: color 0.2s; }
+  .col a:not(.btn):hover { color: #fff; }
+  .wa { justify-self: start; margin-top: 0.4rem; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; padding-top: 1.6rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
+  @media (min-width: 800px) { .top { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+</style>

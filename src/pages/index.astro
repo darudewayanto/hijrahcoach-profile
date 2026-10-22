@@ -1,0 +1,452 @@
+---
+import Base from "../layouts/Base.astro";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Accreditation from "../components/Accreditation.astro";
+import ClientWall from "../components/ClientWall.astro";
+import { u } from "../lib/url";
+import { photo, brand } from "../lib/assets";
+import { site, wa, stats, certifications, abcBenefits, abcTotal, abcInvestment, ahc, units, masterCredentials, gallery } from "../data/site";
+
+const strip = [
+  { title: "Associate Business Coach", text: "16 benefit, dari sertifikasi sampai bisnis coaching.", img: "class-grey", href: u("/associate-business-coach"), cta: "Lihat program" },
+  { title: "Sertifikasi Internasional", text: "ICF, ICAgile & MyBrain dalam satu jalur.", img: "demo-blue", href: u("/sertifikasi"), cta: "5 sertifikasi" },
+  { title: "Beasiswa AHC", text: "1.000 beasiswa agile coaching untuk umat.", img: "workshop-akhwat", href: u("/beasiswa-ahc"), cta: "Daftar beasiswa" },
+  { title: "Hijrah Coach Group", text: "HADE, MyBrain, COA & ekosistem kami.", img: "summit", href: u("/group"), cta: "Kenali group" },
+];
+
+const features = [
+  { icon: "shield", title: "Akreditasi Dunia", text: "ICF · ICAgile · MyBrain" },
+  { icon: "users", title: "1.800+ Lulusan", text: "Coach & practitioner" },
+  { icon: "globe", title: "5 Negara", text: "ID · HK · QA · SA · AU" },
+  { icon: "handshake", title: "Support Bisnis", text: "Sales, marketing & event" },
+];
+
+const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
+---
+<Base>
+  <!-- HERO: giant wordmark with the Master Coach cut out in front, as in the reference -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="intro" data-reveal>
+        <p class="caps">Internationally accredited<br />business coaching firm<br />for a new generation.</p>
+        <span class="rule"></span>
+      </div>
+
+      <div class="stage">
+        <h1 class="word" aria-label="Hijrah Coach — firma business coaching terakreditasi internasional">
+          <span aria-hidden="true">HIJRAH</span>
+        </h1>
+        <div class="figure">
+          <Img src={photo["hero-daru"]} alt="Coach Daru Dewayanto, Master Coach Hijrah Coach, berbicara di panggung" widths={[480, 760, 1000, 1462]} sizes="(min-width: 900px) 560px, 80vw" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+
+      <div class="ctas" data-reveal>
+        <a class="btn btn-ink" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC <Icon name="arrow-right" size={16} /></a>
+        <a class="btn btn-line" href={u("/beasiswa-ahc")}>Beasiswa AHC</a>
+      </div>
+
+      <p class="caps side" data-reveal>Associate<br />Business Coach<br />Program 2026<span class="rule"></span></p>
+    </div>
+  </section>
+
+  <!-- Black category strip -->
+  <section class="strip-wrap">
+    <div class="wrap">
+      <div class="strip on-dark">
+        {strip.map((s) => (
+          <a class="s-card" href={s.href}>
+            <span class="s-thumb"><Img src={photo[s.img]} alt="" widths={[180, 320]} sizes="120px" class="mono" /></span>
+            <span class="s-body">
+              <span class="s-title caps">{s.title}</span>
+              <span class="s-text">{s.text}</span>
+              <span class="btn btn-line btn-sm light">{s.cta} <Icon name="arrow-right" size={13} /></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial banner: Associate Business Coach -->
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="banner" data-reveal>
+        <div class="b-text">
+          <p class="caps eyebrow-plain">Program unggulan</p>
+          <h2 class="h-xl">Associate<br />Business Coach</h2>
+          <p class="lead">Roadmap terstruktur menjadi professional coach, Master Coach, dan entrepreneur pemilik bisnis coaching, didampingi Master Coach berkredensial dunia.</p>
+          <div class="b-value">
+            <div><span class="caps">Total benefit</span><b>{abcTotal}</b></div>
+            <div><span class="caps">Investasi</span><b class="gold">{abcInvestment}</b></div>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-ink" href={u("/associate-business-coach")}>Lihat 16 benefit <Icon name="arrow-right" size={16} /></a>
+            <a class="btn btn-line" href={wa("abc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar via WA</a>
+          </div>
+        </div>
+        <div class="b-photo">
+          <Img src={photo["sunset-stage"]} alt="Coach Daru memimpin kelas Agile Hijrah Coaching" widths={[640, 1000, 1400, 2000]} sizes="(min-width: 900px) 60vw, 100vw" class="mono" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature strip -->
+  <section>
+    <div class="wrap">
+      <ul class="features">
+        {features.map((f) => (
+          <li>
+            <Icon name={f.icon} size={30} />
+            <div><b class="caps">{f.title}</b><span>{f.text}</span></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Product-style grid: 5 certifications -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-head">
+        <h2 class="h-lg">5 Sertifikasi,<br />1 Program</h2>
+        <a class="link-arrow" href={u("/sertifikasi")}>Lihat semua <Icon name="arrow-right" size={14} /></a>
+      </div>
+      <div class="certs">
+        {certifications.map((c, i) => (
+          <a class="cert" href={u(`/sertifikasi#${c.code.toLowerCase()}`)} data-reveal style={`transition-delay:${i * 70}ms`}>
+            <span class="c-img">
+              <Img src={photo[c.photo]} alt={`Kelas ${c.name}`} widths={[300, 520, 800]} sizes="(min-width: 1000px) 230px, 45vw" class="mono mono-hover" />
+              <span class="c-code">{c.code}</span>
+            </span>
+            <span class="c-name">{c.name}</span>
+            <span class="c-meta">{c.credential}</span>
+            <span class="c-meta strong">{c.hours} · {c.mode}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Value vs investment -->
+  <section class="section bg-ink on-dark value">
+    <div class="wrap v-grid">
+      <div class="v-text" data-reveal>
+        <span class="eyebrow">Kenapa ABC</span>
+        <h2 class="h-lg">Nilai<br /><span class="gold">7× lipat</span><br />investasi Anda</h2>
+        <p class="lead">Bukan sekadar sertifikasi. Anda mendapatkan sistem, brand, mentor, dan tim yang membantu Anda menjalankan bisnis coaching dari prospek sampai penagihan.</p>
+        <div class="btn-row">
+          <a class="btn btn-gold" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC sekarang <Icon name="arrow-right" size={16} /></a>
+          <a class="btn btn-line" href={u("/associate-business-coach")}>Bandingkan benefit</a>
+        </div>
+      </div>
+      <div class="v-card" data-reveal>
+        <ul>
+          {highlights.map((b) => (
+            <li><span>{b.title}</span><b>{b.value}</b></li>
+          ))}
+          <li class="plus"><span>+ 9 benefit <em>priceless</em>: support sales, marketing, event, corporate project, lisensi brand & mentoring Master Coach</span></li>
+        </ul>
+        <div class="v-total">
+          <div><span class="caps">Total benefit</span><s>{abcTotal}</s></div>
+          <div><span class="caps">Investasi ABC</span><b>{abcInvestment}</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AHC movement -->
+  <section class="section ahc">
+    <div class="wrap">
+      <div class="ahc-panel on-dark">
+        <div class="ahc-text" data-reveal>
+          <Img src={brand.ahc} alt="Agile Hijrah Coaching Certification" width={340} class="ahc-logo" />
+          <span class="eyebrow">1.000 Scholarship Movement</span>
+          <h2 class="h-md">Beasiswa agile coaching untuk para penggerak umat.</h2>
+          <p class="lead">{ahc.mission} Untuk {ahc.audience.toLowerCase()}</p>
+          <ul class="ahc-stats">
+            {ahc.stats.slice(1, 5).map((s) => <li><b>{s.value}</b><span>{s.label}</span></li>)}
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-gold" href={wa("ahc")} target="_blank" rel="noopener">Daftar beasiswa <Icon name="arrow-right" size={16} /></a>
+            <a class="btn btn-line" href={u("/beasiswa-ahc")}>Tentang AHC</a>
+          </div>
+        </div>
+        <div class="ahc-photos">
+          <Img src={photo["class-wide"]} alt="Kelas AHC dengan puluhan peserta" widths={[500, 900, 1400]} sizes="(min-width: 900px) 40vw, 90vw" class="p1 mono" />
+          <Img src={photo["group-five"]} alt="Coach Daru bersama para asatidz peserta AHC" widths={[400, 700]} sizes="(min-width: 900px) 20vw, 45vw" class="p2 mono" />
+          <Img src={photo["workshop-akhwat"]} alt="Workshop AHC Fundamental kelas akhwat" widths={[400, 700]} sizes="(min-width: 900px) 20vw, 45vw" class="p3 mono" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hijrah Coach Group -->
+  <section class="section bg-paper">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <span class="eyebrow">Hijrah Coach Group</span>
+          <h2 class="h-lg" style="margin-top:1rem">5 Core<br />Business Unit</h2>
+        </div>
+        <p class="lead">Satu ekosistem: sertifikasi coach, beasiswa umat, solusi korporasi, program kampus, dan applied-neuroscience, semuanya di bawah standar Master Coach Hijrah Coach.</p>
+      </div>
+      <div class="units">
+        {units.map((x) => (
+          <a class:list={["unit", { dark: x.dark }]} href={x.external ? x.href : u(x.href)} target={x.external ? "_blank" : undefined} rel={x.external ? "noopener" : undefined} data-reveal>
+            <span class="u-logo"><Img src={brand[x.logo]} alt={x.name} height={x.key === "ahc" ? 46 : 70} /></span>
+            <span class="u-name">{x.name}</span>
+            <span class="u-role">{x.role}</span>
+            <span class="u-go"><Icon name={x.external ? "arrow-up-right" : "arrow-right"} size={18} /></span>
+          </a>
+        ))}
+      </div>
+      <div class="network">
+        {stats.map((s) => <div><b>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Coach -->
+  <section class="section">
+    <div class="wrap">
+      <div class="mc" data-reveal>
+        <div class="mc-photo">
+          <Img src={photo["daru-portrait"]} alt="Daru Dewayanto, MCC, ICE-AC" widths={[400, 700, 1000]} sizes="(min-width: 900px) 420px, 80vw" />
+        </div>
+        <div class="mc-text">
+          <p class="caps eyebrow-plain">Founder & Master Coach</p>
+          <h2 class="h-lg">Daru<br />Dewayanto</h2>
+          <p class="caps creds">MCM · MCC · ICE-AC</p>
+          <p class="lead">The first & only in Asia & Australia: pemegang 3 board master agile coach credential. 100 Best Global Coaching Leader (WCC) 2017–2019, telah melatih & mensertifikasi 1.800+ coach, dan mendampingi 1.000+ perusahaan, eksekutif, dan pemilik bisnis.</p>
+          <ul class="mc-list">
+            {masterCredentials.slice(0, 4).map((c) => <li><Icon name="check" size={16} /> {c}</li>)}
+          </ul>
+          <a class="btn btn-ink" href={site.masterCoachUrl} target="_blank" rel="noopener">Kunjungi website Master Coach <Icon name="arrow-up-right" size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Accreditation />
+
+  <!-- Gallery -->
+  <section class="section-sm gallery-sec">
+    <div class="wrap">
+      <div class="grid-head">
+        <h2 class="h-lg">Di Dalam Kelas</h2>
+        <a class="link-arrow" href={u("/beasiswa-ahc")}>Program AHC <Icon name="arrow-right" size={14} /></a>
+      </div>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="Galeri kegiatan Hijrah Coach">
+      {gallery.map((g) => (
+        <figure>
+          <Img src={photo[g.img]} alt={g.caption} widths={[420, 700, 1000]} sizes="420px" class="mono mono-hover" />
+          <figcaption>{g.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <ClientWall />
+
+  <CtaBand />
+</Base>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero { position: relative; overflow: hidden; }
+  .hero-grid { position: relative; display: grid; padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .intro { display: grid; gap: 0.9rem; justify-items: start; position: relative; z-index: 3; }
+  .intro .caps { font-size: clamp(0.72rem, 1.05vw, 0.92rem); }
+  .stage { position: relative; height: clamp(430px, 118vw, 560px); margin-top: 0.5rem; }
+  .word {
+    position: absolute;
+    left: 50%;
+    top: 16%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: clamp(5.2rem, 25vw, 20rem);
+    font-weight: 800;
+    line-height: 0.78;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .figure { position: absolute; z-index: 2; bottom: 0; left: 50%; height: 100%; transform: translateX(-44%); pointer-events: none; }
+  .figure :global(img) { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 30px 40px rgba(21, 20, 19, 0.18)); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 0.7rem; padding-block: 1.4rem 0.4rem; position: relative; z-index: 3; }
+  .side { display: none; }
+  .side .rule { margin-top: 0.8rem; }
+
+  @media (min-width: 900px) {
+    .hero-grid { min-height: clamp(600px, calc(100vh - 78px - 120px), 820px); padding-top: 3rem; }
+    .stage { position: absolute; inset: 0; height: auto; margin: 0; }
+    .word { top: 27%; font-size: clamp(10rem, 24vw, 22rem); }
+    .figure { height: 97%; transform: translateX(-40%); }
+    .ctas { position: absolute; left: 0; bottom: 2.4rem; padding: 0; }
+    .side { display: block; position: absolute; right: 0; bottom: 2.6rem; z-index: 3; font-size: 0.82rem; }
+  }
+
+  /* ---------- Category strip ---------- */
+  .strip-wrap { position: relative; z-index: 4; }
+  .strip {
+    display: grid;
+    gap: 1px;
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 0.75rem;
+    box-shadow: 0 30px 60px -30px rgba(21, 20, 19, 0.5);
+  }
+  .s-card { display: flex; gap: 1rem; align-items: center; padding: 0.85rem; border-radius: 12px; transition: background 0.3s; }
+  .s-card:hover { background: rgba(255, 255, 255, 0.05); }
+  .s-thumb { flex: none; width: 92px; height: 112px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); }
+  .s-thumb :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+  .s-card:hover .s-thumb :global(img) { transform: scale(1.06); }
+  .s-body { display: grid; gap: 0.35rem; justify-items: start; }
+  .s-title { font-size: 0.92rem; letter-spacing: 0.12em; }
+  .s-text { font-family: var(--serif); font-size: 1rem; line-height: 1.25; color: rgba(255, 255, 255, 0.72); }
+  .s-body .btn { margin-top: 0.35rem; }
+  @media (min-width: 640px) { .strip { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) {
+    .strip { grid-template-columns: repeat(4, 1fr); }
+    .s-card + .s-card { border-left: 1px solid rgba(255, 255, 255, 0.08); border-radius: 0 12px 12px 0; }
+  }
+
+  /* ---------- Banner ---------- */
+  .banner {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    border-radius: 18px;
+    background: linear-gradient(100deg, var(--paper) 0%, var(--cream-2) 100%);
+  }
+  .b-text { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
+  .eyebrow-plain { font-size: 0.78rem; color: var(--ink-soft); }
+  .b-value { display: flex; gap: 2rem; padding: 0.9rem 0; border-block: 1px solid var(--line); }
+  .b-value div { display: grid; gap: 0.15rem; }
+  .b-value .caps { font-size: 0.66rem; color: var(--grey); }
+  .b-value b { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .b-photo { position: relative; min-height: 300px; }
+  .b-photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  @media (min-width: 900px) {
+    .banner { grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .b-photo { position: absolute; inset: 0 0 0 38%; }
+    .b-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.55) 22%, transparent 48%); }
+  }
+
+  /* ---------- Feature strip ---------- */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1rem;
+    padding: 1.4rem clamp(1rem, 3vw, 2rem);
+    border-radius: 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .features li { display: flex; align-items: center; gap: 0.9rem; color: var(--ink); }
+  .features li :global(svg) { flex: none; color: var(--gold-deep); }
+  .features div { display: grid; }
+  .features b { font-size: 0.74rem; letter-spacing: 0.14em; }
+  .features span { font-size: 0.82rem; color: var(--ink-soft); }
+  @media (min-width: 900px) {
+    .features { grid-template-columns: repeat(4, 1fr); }
+    .features li { justify-content: center; }
+    .features li + li { border-left: 1px solid var(--line); }
+  }
+
+  /* ---------- Certification grid ---------- */
+  .grid-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+  .certs { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.9rem, 1.6vw, 1.25rem); }
+  .cert { display: grid; gap: 0.3rem; align-content: start; }
+  .c-img { position: relative; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; background: var(--stone); margin-bottom: 0.6rem; }
+  .c-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .cert:hover .c-img :global(img) { transform: scale(1.04); }
+  .c-code {
+    position: absolute; top: 0.7rem; right: 0.7rem;
+    font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em;
+    padding: 0.35rem 0.6rem; border-radius: 999px;
+    background: rgba(248, 245, 239, 0.9); color: var(--ink);
+  }
+  .c-name { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; line-height: 1.15; }
+  .c-meta { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
+  .c-meta.strong { color: var(--gold-deep); font-weight: 700; }
+  @media (min-width: 640px) { .certs { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .certs { grid-template-columns: repeat(5, 1fr); } }
+
+  /* ---------- Value ---------- */
+  .v-grid { display: grid; gap: 3rem; align-items: center; }
+  .v-text { display: grid; gap: 1.4rem; justify-items: start; }
+  .v-card { border: 1px solid var(--line-dark); border-radius: 18px; padding: clamp(1.4rem, 3vw, 2.2rem); background: rgba(255, 255, 255, 0.03); }
+  .v-card ul { display: grid; }
+  .v-card li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line-dark); font-size: 0.92rem; color: rgba(255, 255, 255, 0.82); }
+  .v-card li b { flex: none; font-family: var(--serif); font-size: 1.05rem; color: #fff; }
+  .v-card li.plus { color: var(--gold-2); }
+  .v-total { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.3rem; }
+  .v-total div { display: grid; gap: 0.2rem; }
+  .v-total div:last-child { text-align: right; }
+  .v-total .caps { font-size: 0.64rem; color: rgba(255, 255, 255, 0.55); }
+  .v-total s { font-family: var(--serif); font-size: 1.5rem; color: rgba(255, 255, 255, 0.55); }
+  .v-total b { font-family: var(--serif); font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--gold-2); }
+  @media (min-width: 980px) { .v-grid { grid-template-columns: 0.9fr 1.1fr; gap: 4.5rem; } }
+
+  /* ---------- AHC ---------- */
+  .ahc-panel { display: grid; gap: 2.5rem; border-radius: 22px; background: var(--ink-2); padding: clamp(1.6rem, 5vw, 4rem); overflow: hidden; position: relative; }
+  .ahc-panel::before { content: ""; position: absolute; inset: auto -10% -40% auto; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(187, 149, 110, 0.18), transparent 65%); }
+  .ahc-text { display: grid; gap: 1.2rem; justify-items: start; position: relative; }
+  .ahc-text :global(.ahc-logo) { width: min(340px, 80%); height: auto; margin-bottom: 0.5rem; }
+  .ahc-stats { display: grid; grid-template-columns: repeat(4, auto); gap: 1.4rem; padding: 1rem 0; border-block: 1px solid var(--line-dark); width: 100%; }
+  .ahc-stats li { display: grid; }
+  .ahc-stats b { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--gold-2); line-height: 1; }
+  .ahc-stats span { font-size: 0.74rem; color: rgba(255, 255, 255, 0.6); line-height: 1.3; margin-top: 0.3rem; }
+  .ahc-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; position: relative; }
+  .ahc-photos :global(img) { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .ahc-photos :global(.p1) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .ahc-photos :global(.p2), .ahc-photos :global(.p3) { aspect-ratio: 4 / 3; }
+  @media (max-width: 560px) { .ahc-stats { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .ahc-panel { grid-template-columns: 1fr 1fr; align-items: center; gap: 3.5rem; } }
+
+  /* ---------- Group ---------- */
+  .units { display: grid; gap: 1rem; }
+  .unit {
+    position: relative; display: grid; gap: 0.5rem; align-content: start;
+    padding: 1.6rem 1.4rem 1.4rem; border-radius: 16px; background: #fff; border: 1px solid var(--line);
+    min-height: 250px; transition: transform 0.35s var(--ease), box-shadow 0.35s;
+  }
+  .unit:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -26px rgba(21, 20, 19, 0.45); }
+  .unit.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .u-logo { height: 80px; display: flex; align-items: center; margin-bottom: 0.8rem; }
+  .u-logo :global(img) { width: auto; max-width: 100%; object-fit: contain; }
+  .u-name { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
+  .u-role { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.45; }
+  .unit.dark .u-role { color: rgba(255, 255, 255, 0.65); }
+  .u-go { position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; border: 1px solid currentColor; opacity: 0.5; transition: opacity 0.3s; }
+  .unit:hover .u-go { opacity: 1; }
+  .network { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .network div { display: grid; }
+  .network b { font-family: var(--serif); font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1; }
+  .network span { font-size: 0.84rem; color: var(--ink-soft); }
+  @media (min-width: 640px) { .units { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .units { grid-template-columns: repeat(5, 1fr); } .network { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- Master Coach ---------- */
+  .mc { display: grid; border-radius: 22px; background: linear-gradient(160deg, var(--cream-2), var(--stone)); overflow: hidden; }
+  .mc-photo { display: flex; align-items: end; justify-content: center; padding-top: 2rem; }
+  .mc-photo :global(img) { width: min(440px, 88%); height: auto; }
+  .mc-text { display: grid; gap: 1.1rem; justify-items: start; padding: clamp(1.8rem, 5vw, 4rem); }
+  .creds { color: var(--gold-deep); font-size: 0.82rem; }
+  .mc-list { display: grid; gap: 0.5rem; }
+  .mc-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; }
+  .mc-list :global(svg) { flex: none; margin-top: 0.25rem; color: var(--gold-deep); }
+  @media (min-width: 900px) { .mc { grid-template-columns: 0.9fr 1.1fr; align-items: end; } .mc-text { align-self: center; } }
+
+  /* ---------- Gallery ---------- */
+  .gallery { display: flex; gap: 1rem; overflow-x: auto; padding: 0 max(1.25rem, (100vw - var(--wrap)) / 2) 1rem; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .gallery figure { flex: none; width: min(420px, 78vw); margin: 0; scroll-snap-align: start; }
+  .gallery :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+  .gallery figcaption { margin-top: 0.6rem; font-size: 0.84rem; color: var(--ink-soft); }
+</style>

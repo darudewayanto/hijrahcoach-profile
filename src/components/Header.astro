@@ -1,0 +1,140 @@
+---
+import { u } from "../lib/url";
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import { brand } from "../lib/assets";
+import { nav, wa } from "../data/site";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const path = Astro.url.pathname.slice(base.length).replace(/\/$/, "") || "/";
+const isActive = (href: string) => path.startsWith(href);
+const href = (n: { href: string; external?: boolean }) => (n.external ? n.href : u(n.href));
+const left = nav.slice(0, 3);
+const right = nav.slice(3);
+---
+<header class="site-header" data-header>
+  <div class="bar wrap">
+    <nav class="links left" aria-label="Program">
+      {left.map((n) => (
+        <a href={href(n)} class:list={[{ active: isActive(n.href) }]} aria-current={isActive(n.href) ? "page" : undefined}>{n.label}</a>
+      ))}
+    </nav>
+
+    <a href={u("/")} class="brand" aria-label="Hijrah Coach — beranda">
+      <Img src={brand["hijrah-hor-gold"]} alt="Hijrah Coach" width={210} loading="eager" />
+      <span class="brand-sub">Internationally accredited business coaching firm</span>
+    </a>
+
+    <nav class="links right" aria-label="Lainnya">
+      {right.map((n) => (
+        <a href={href(n)} class:list={[{ active: !n.external && isActive(n.href) }]} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener" : undefined}>
+          {n.short ?? n.label}{n.external && <Icon name="arrow-up-right" size={13} />}
+        </a>
+      ))}
+      <a class="btn btn-ink btn-sm cta" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC</a>
+    </nav>
+
+    <button class="toggle" aria-expanded="false" aria-controls="mobile-nav" data-toggle>
+      <span class="sr-only">Buka menu</span>
+      <Icon name="menu" size={22} class="i-open" />
+      <Icon name="close" size={22} class="i-close" />
+    </button>
+  </div>
+
+  <div class="mobile wrap" id="mobile-nav" data-mobile hidden>
+    <nav aria-label="Mobile">
+      <a href={u("/")} class:list={[{ active: path === "/" }]}>Beranda</a>
+      {nav.map((n) => (
+        <a href={href(n)} class:list={[{ active: !n.external && isActive(n.href) }]} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener" : undefined}>
+          {n.label}{n.external && <Icon name="arrow-up-right" size={18} />}
+        </a>
+      ))}
+    </nav>
+    <div class="btn-row">
+      <a class="btn btn-ink" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC <Icon name="arrow-right" size={16} /></a>
+      <a class="btn btn-line" href={wa("ahc")} target="_blank" rel="noopener">Beasiswa AHC</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(241, 236, 227, 0.9);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    transition: box-shadow 0.35s;
+  }
+  .site-header.scrolled, .site-header.open { box-shadow: 0 1px 0 var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 78px; }
+  .brand { display: grid; justify-items: center; gap: 0.3rem; }
+  .brand :global(img) { width: clamp(160px, 16vw, 210px); height: auto; }
+  .brand-sub { display: none; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--grey); }
+
+  .links { display: none; align-items: center; gap: 0.15rem; flex: 1; }
+  .links.right { justify-content: flex-end; }
+  .links a:not(.btn) {
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.7rem;
+    white-space: nowrap;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .links a:not(.btn)::after {
+    content: ""; position: absolute; left: 0.7rem; right: 0.7rem; bottom: 0.25rem; height: 1px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
+  }
+  .links a:not(.btn):hover::after, .links a.active::after { transform: scaleX(1); }
+  .links a.active { color: var(--gold-deep); }
+  .cta { margin-left: 0.5rem; }
+
+  .toggle {
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--ink);
+    color: #fff;
+    cursor: pointer;
+  }
+  .toggle :global(.i-close) { display: none; }
+  .toggle[aria-expanded="true"] :global(.i-close) { display: block; }
+  .toggle[aria-expanded="true"] :global(.i-open) { display: none; }
+
+  .mobile { display: grid; gap: 1.4rem; padding-bottom: 1.6rem; }
+  .mobile[hidden] { display: none; }
+  .mobile nav { display: grid; }
+  .mobile nav a {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-family: var(--serif); font-weight: 700; font-size: 1.65rem;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--line);
+  }
+  .mobile nav a.active { color: var(--gold-deep); }
+
+  @media (min-width: 1180px) {
+    .links { display: flex; }
+    .brand-sub { display: block; }
+    .toggle, .mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-header]")!;
+  const toggle = header.querySelector<HTMLButtonElement>("[data-toggle]")!;
+  const panel = header.querySelector<HTMLElement>("[data-mobile]")!;
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+    header.classList.toggle("open", !open);
+  });
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 12);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>
