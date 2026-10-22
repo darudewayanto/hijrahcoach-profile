@@ -5,7 +5,7 @@ Astro static site, Bahasa Indonesia. Dev server: `hijrahcoach-website` (port 432
 - **Konten**: semua teks di `src/data/site.ts` (sumber: *Hijrah Coach Profile 221026* dan tabel *Benefit of Associate Business Coach Program*).
 - **Desain**: look & feel mengikuti referensi "Evora Style" (cream, abu, hitam + emas; wordmark raksasa dengan figur cut-out, strip kategori hitam, banner editorial membulat, grid ala produk). Warna & font dari *Hijrah Brand Manual*: Black `#414042`, Gold `#BB956E`, Abhaya Libre (pengganti Zahrah) + Mulish (pengganti Muli). Token di `src/styles/global.css`.
 - **Foto**: `src/assets/photos/` = 19 foto kiriman Coach Daru (22 Okt 2026) + foto dari website Coach Daru. Ditampilkan monokrom hangat (`.mono`) agar backdrop acara yang warna-warni menyatu; warna asli muncul saat hover.
-- **Hero cut-out**: `hero-daru.png` dipotong otomatis (macOS Vision) dari `daru-speaking.jpg`, lalu dibuat hitam-putih. Skrip ulang: `node scripts/prepare-assets.mjs <scratch> <dropbox-logo-dir> <project>`.
+- **Hero cut-out**: `hero-daru-lean.png` = foto cut-out kiriman Coach Daru (22 Okt 2026, pose bersandar), aslinya hanya 326×623 px → diperbesar 2,5× (lanczos + sharpen) dan dibuat hitam-putih. Minta file resolusi asli agar lebih tajam.
 - **Logo**: horizontal Gold/White dari Dropbox `Logo & Design/*Hijrah Logos*/*Logo Files` (1998px, tajam).
 - **Review screenshot**: tambahkan `?static` pada URL untuk menampilkan semua section tanpa animasi.
 

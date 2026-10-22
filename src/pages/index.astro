@@ -39,7 +39,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
           <span aria-hidden="true">HIJRAH</span>
         </h1>
         <div class="figure">
-          <Img src={photo["hero-daru"]} alt="Coach Daru Dewayanto, Master Coach Hijrah Coach, berbicara di panggung" widths={[480, 760, 1000, 1462]} sizes="(min-width: 900px) 560px, 80vw" loading="eager" fetchpriority="high" />
+          <Img src={photo["hero-daru-lean"]} alt="Coach Daru Dewayanto, Master Coach Hijrah Coach, berdiri bersandar dengan jas biru" widths={[300, 490]} sizes="(min-width: 900px) 280px, 45vw" loading="eager" fetchpriority="high" />
         </div>
       </div>
 
@@ -276,8 +276,10 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
     color: var(--ink);
     white-space: nowrap;
   }
-  .figure { position: absolute; z-index: 2; bottom: 0; left: 50%; height: 100%; transform: translateX(-44%); pointer-events: none; }
-  .figure :global(img) { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 30px 40px rgba(21, 20, 19, 0.18)); }
+  .figure { position: absolute; z-index: 2; bottom: 1rem; left: 50%; height: 96%; transform: translateX(-50%); pointer-events: none; }
+  .figure :global(img) { position: relative; z-index: 1; height: 100%; width: auto; max-width: none; filter: drop-shadow(0 18px 24px rgba(21, 20, 19, 0.16)); }
+  /* Soft floor shadow under the shoes, as in the reference. */
+  .figure::after { content: ""; position: absolute; left: -12%; right: 18%; bottom: -0.6rem; height: 1.6rem; border-radius: 50%; background: radial-gradient(closest-side, rgba(21, 20, 19, 0.28), transparent); }
   .ctas { display: flex; flex-wrap: wrap; gap: 0.7rem; padding-block: 1.4rem 0.4rem; position: relative; z-index: 3; }
   .side { display: none; }
   .side .rule { margin-top: 0.8rem; }
@@ -286,7 +288,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
     .hero-grid { min-height: clamp(600px, calc(100vh - 78px - 120px), 820px); padding-top: 3rem; }
     .stage { position: absolute; inset: 0; height: auto; margin: 0; }
     .word { top: 27%; font-size: clamp(10rem, 24vw, 22rem); }
-    .figure { height: 97%; transform: translateX(-40%); }
+    .figure { height: 92%; bottom: 1.6rem; transform: translateX(-46%); }
     .ctas { position: absolute; left: 0; bottom: 2.4rem; padding: 0; }
     .side { display: block; position: absolute; right: 0; bottom: 2.6rem; z-index: 3; font-size: 0.82rem; }
   }
