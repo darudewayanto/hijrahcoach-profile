@@ -6,7 +6,7 @@ import Accreditation from "../components/Accreditation.astro";
 import ClientWall from "../components/ClientWall.astro";
 import { u } from "../lib/url";
 import { photo, brand } from "../lib/assets";
-import { site, wa, units, stats, countries, partnerCountries, journey, masterCredentials } from "../data/site";
+import { site, wa, units, stats, countries, partnerCountries, masterCredentials } from "../data/site";
 
 // HADE, COA and MyBrain cards use the hero photo of each unit's own website.
 const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "abc-hero", hade: "unit-hade", coa: "unit-coa", mybrain: "unit-mybrain" };
@@ -86,16 +86,12 @@ const unitFocus: Record<string, string> = { abc: "52% 28%", hade: "50% 28%", coa
           <span class="eyebrow">Our journey</span>
           <h2 class="h-lg" style="margin-top:1rem">15 Tahun<br />Perjalanan</h2>
         </div>
-        <p class="lead">Dari business coach UMKM di 2011 menjadi firm-based coaching company dengan akreditasi internasional dan platform AI coaching.</p>
+        <p class="lead">Berdiri sejak 2011, berawal dari solo-coach-preneur, Hijrah Coach telah bertransformasi menjadi Internationally Accredited & Certified Coaching Group Organization: 5 Business Unit & Brand, 28 Firm, 180 Associate Business Coach, 1.800 Coach Graduate di Indonesia, Hong Kong, Qatar, Saudi Arabia, dan Australia.</p>
       </div>
-      <ol class="journey">
-        {journey.map((j) => (
-          <li data-reveal>
-            <span class="period">{j.period}</span>
-            <ul>{j.items.map((t) => <li>{t}</li>)}</ul>
-          </li>
-        ))}
-      </ol>
+      <!-- Journey artwork from Coach Daru (2011–2025 timeline with credential logos), shown as-is as lossless PNG. -->
+      <div class="journey-art">
+        <Img src={photo["journey"]} alt="Perjalanan Hijrah Coach 2011–2016, 2017–2019, 2020–2025: akreditasi ICF, WABC, MyBrain, EMCC, ICAgile; firm-based coaching company; MCC & ICE-AC; peluncuran HADE, finalis Startup World Cup Qatar & Startup Istanbul" widths={[1882]} sizes="(min-width: 1240px) 1160px, 100vw" format="png" />
+      </div>
     </div>
   </section>
 
@@ -151,13 +147,7 @@ const unitFocus: Record<string, string> = { abc: "52% 28%", hade: "50% 28%", coa
   .presence p { margin-top: 0.4rem; font-family: var(--serif); font-size: 1.25rem; color: rgba(255, 255, 255, 0.88); }
   @media (min-width: 900px) { .big-stats { grid-template-columns: repeat(4, 1fr); } .presence { grid-template-columns: 1fr 1fr; } }
 
-  .journey { display: grid; gap: 1rem; }
-  .journey > li { display: grid; gap: 1rem; padding: 1.8rem; border-radius: 16px; background: var(--paper); border: 1px solid var(--line); }
-  .period { font-family: var(--serif); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--gold-deep); }
-  .journey ul { display: grid; gap: 0.7rem; }
-  .journey ul li { position: relative; padding-left: 1.1rem; font-size: 0.92rem; color: var(--ink-soft); }
-  .journey ul li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 6px; height: 1px; background: var(--gold-deep); }
-  @media (min-width: 900px) { .journey { grid-template-columns: repeat(3, 1fr); } }
+  .journey-art :global(img) { width: 100%; height: auto; }
 
   .mc { display: grid; gap: 2rem; align-items: center; }
   .mc :global(.mc-img) { width: 220px; height: auto; border-radius: 50%; background: var(--stone); aspect-ratio: 1; object-fit: cover; object-position: 50% 10%; }
