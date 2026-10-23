@@ -313,7 +313,10 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   @media (min-width: 900px) {
     .banner { grid-template-columns: 1fr 1fr; min-height: 520px; }
     .b-photo { position: absolute; inset: 0 0 0 38%; }
-    .b-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.55) 22%, transparent 48%); }
+    .b-photo {
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.2) 12%, rgba(0, 0, 0, 0.6) 26%, rgba(0, 0, 0, 0.9) 38%, #000 48%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.2) 12%, rgba(0, 0, 0, 0.6) 26%, rgba(0, 0, 0, 0.9) 38%, #000 48%);
+    }
   }
 
   /* ---------- Feature strip ---------- */

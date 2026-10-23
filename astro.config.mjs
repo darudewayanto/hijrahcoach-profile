@@ -9,4 +9,7 @@ export default defineConfig({
   site: process.env.SITE_URL ?? 'https://hijrahcoach.co.id',
   base: process.env.BASE_PATH ?? '/',
   devToolbar: { enabled: false },
+  // Inline CSS into each page: GitHub Pages caches HTML for 10 minutes, so a cached page could
+  // otherwise point at a stylesheet hash that a newer deploy already removed (unstyled page).
+  build: { inlineStylesheets: 'always' },
 });

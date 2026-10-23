@@ -33,9 +33,16 @@ const { eyebrow, title, lead, img, imgAlt, position = "50% 35%", softFade = fals
     .ph-panel { min-height: 540px; grid-template-columns: 1.05fr 0.95fr; align-items: center; }
     .ph-text { max-width: 640px; }
     .ph-photo { position: absolute; inset: 0 0 0 44%; }
-    .ph-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.7) 22%, transparent 50%); }
-    /* For photos whose subject sits at the left edge: keep the fade narrow so the subject stays visible. */
-    .ph-photo.soft { inset: 0 0 0 49%; }
-    .ph-photo.soft::before { background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.4) 6%, transparent 16%); }
+    /* Fade the photo itself into the panel (mask), so the edge always matches the panel's gradient. */
+    .ph-photo {
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 12%, rgba(0, 0, 0, 0.55) 26%, rgba(0, 0, 0, 0.88) 40%, #000 52%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 12%, rgba(0, 0, 0, 0.55) 26%, rgba(0, 0, 0, 0.88) 40%, #000 52%);
+    }
+    /* For photos whose subject sits at the left edge: start the photo further right and fade over a shorter run. */
+    .ph-photo.soft {
+      inset: 0 0 0 46%;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.3) 7%, rgba(0, 0, 0, 0.75) 15%, #000 24%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.3) 7%, rgba(0, 0, 0, 0.75) 15%, #000 24%);
+    }
   }
 </style>
