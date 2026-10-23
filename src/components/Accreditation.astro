@@ -7,11 +7,11 @@ import { awards } from "../data/site";
   <div class="wrap">
     <div class="head center">
       <span class="eyebrow">Kredibilitas internasional</span>
-      <h2 class="h-md">Diakreditasi oleh 3 World Major Coaching Organization dan Pemegang 3 Internationally Accredited Coaching Certification</h2>
+      <h2 class="acc-title"><span>Di Akreditasi oleh 3 World Major Coaching Organization dan</span> <span>Pemegang 3 Internationally Accredited Coaching Certification</span></h2>
     </div>
     <!-- Logo strip artwork from Coach Daru, shown in full color as lossless PNG (no blur). -->
     <div class="strip">
-      <Img src={photo["accred-strip"]} alt="Accredited by ICF, ICAgile & MyBrain; internationally accredited coaching certification: ICF Level 1, ICP-ACC, MiND" widths={[1814]} sizes="(min-width: 1240px) 1160px, 100vw" format="png" />
+      <Img src={photo["accred-strip"]} alt="Accredited by ICF, ICAgile & MyBrain; internationally accredited coaching certification: ICF Level 1, ICP-ACC, MiND" widths={[1814]} sizes="(min-width: 960px) 900px, 100vw" format="png" />
     </div>
     <ul class="awards">
       {awards.map((a) => <li>{a}</li>)}
@@ -20,8 +20,11 @@ import { awards } from "../data/site";
 </section>
 
 <style>
-  .head h2 { max-width: 30ch; }
-  .strip { padding-top: 0.5rem; }
+  /* Two fixed lines on desktop; wraps naturally on small screens. */
+  .acc-title { font-size: clamp(1.35rem, 2.15vw, 1.95rem); line-height: 1.25; }
+  @media (min-width: 900px) { .acc-title span { display: block; white-space: nowrap; } }
+  /* Shown at ~half its 1814px source width (2x density) so the logos stay crisp on retina screens. */
+  .strip { padding-top: 0.5rem; max-width: 900px; margin-inline: auto; }
   .strip :global(img) { width: 100%; height: auto; }
   .awards { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.8rem; }
   .awards li { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 0.9rem; border: 1px solid rgba(150, 115, 79, 0.4); border-radius: 999px; color: var(--gold-deep); }
