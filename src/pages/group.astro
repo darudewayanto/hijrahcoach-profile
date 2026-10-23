@@ -10,39 +10,6 @@ import { site, wa, units, stats, countries, partnerCountries, masterCredentials 
 
 // HADE, COA and MyBrain cards use the hero photo of each unit's own website.
 const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "abc-hero", hade: "unit-hade", coa: "unit-coa", mybrain: "unit-mybrain" };
-// Timeline copy, positioned above each logo group of the artwork (units of a 1776-wide canvas).
-const journeyBlocks = [
-  { period: "2011 – 2016", x: 10, w: 600, bottom: 236, items: [
-    "Mendampingi <b>1.000+ korporasi & UMKM</b>, terutama di Jakarta, Surabaya, Bandung, dan Mataram.",
-    "<b>3.000+ jam coaching</b> dan <b>2.000+ jam training</b>.",
-    "Official business coach bersama KADIN, HIPMI, IWAPI, Telkom Indonesia & organisasi entrepreneur lainnya.",
-    "Terakreditasi <b>4 organisasi coaching & applied-neuroscience dunia</b>:",
-  ] },
-  { period: "2017 – 2019", x: 640, w: 590, bottom: 786, items: [
-    "Akhir 2017 resmi bertransformasi menjadi <b>firm-based coaching company & platform</b>.",
-    "Meraih akreditasi & lisensi sertifikasi internasional di bidang coaching & applied-neuroscience:",
-  ] },
-  { period: "2017 – 2019", x: 640, w: 590, bottom: 396, items: [
-    "Bergabung <b>11 firma</b> dan <b>50 associate coach</b> sepanjang 2017–2019.",
-    "Akreditasi tambahan dari EMCC, salah satu organisasi coaching dunia.",
-    "Terdaftar resmi & menyelenggarakan sertifikasi coaching di <b>3 negara</b>:",
-  ] },
-  { period: "2017 – 2019", x: 640, w: 590, bottom: 183, items: [
-    "Kredensial master <b>MiND Master Practitioner</b> (MyBrain International) & <b>Certified Master Coach</b> (Corporate Coach Academy).",
-  ] },
-  { period: "2020 – 2025", x: 1262, w: 514, bottom: 906, items: [
-    "Kredensial Master Coach: <b>Master Certified Coach (MCC)</b> dari ICF & <b>ICAgile Expert in Agile Coaching (ICE-AC)</b>.",
-  ] },
-  { period: "2020 – 2025", x: 1262, w: 514, bottom: 686, items: [
-    "Akhir 2022 mencapai <b>26 firma</b> & <b>170+ associate coach</b>.",
-    "Akreditasi tambahan ICAgile untuk menyelenggarakan & mensertifikasi agile coach:",
-  ] },
-  { period: "2020 – 2025", x: 1262, w: 514, bottom: 320, items: [
-    "Mensertifikasi <b>1.600+ professional coach & practitioner</b> di Indonesia, Hong Kong, Australia & Qatar.",
-    "Meluncurkan <b>HADE</b>, aplikasi coaching & mentoring berbasis AI untuk UMKM.",
-    "Finalis <b>Top 10 Startup World Cup</b> Qatar & <b>Top 77 Startup Istanbul</b>.",
-  ] },
-];
 const unitFocus: Record<string, string> = { abc: "52% 28%", hade: "50% 28%", coa: "40% 45%", mybrain: "50% 42%" };
 ---
 <Base title="Hijrah Coach Group" description="Hijrah Coach Group: 5 core business unit — Agile Hijrah Coaching, Associate Business Coaching, HADE, Center of Agility, dan MyBrain Indonesia. 28 firma, 180 associate coach, 1.800+ lulusan di 5 negara.">
@@ -121,15 +88,9 @@ const unitFocus: Record<string, string> = { abc: "52% 28%", hade: "50% 28%", coa
         </div>
         <p class="lead">Berdiri sejak 2011, berawal dari solo-coach-preneur, Hijrah Coach telah bertransformasi menjadi Internationally Accredited & Certified Coaching Group Organization: 5 Business Unit & Brand, 28 Firm, 180 Associate Business Coach, 1.800 Coach Graduate di Indonesia, Hong Kong, Qatar, Saudi Arabia, dan Australia.</p>
       </div>
-      <!-- Timeline: Coach Daru's logo artwork as the base layer, Indonesian copy set as live text and
-           positioned over it in the artwork's own coordinate space (1776 × 1028 units, artwork offset 130 down). -->
-      <div class="jt">
-        <Img src={photo["journey-logos"]} alt="" widths={[1776]} sizes="(min-width: 1240px) 1240px, 100vw" format="png" class="jt-art" />
-        {journeyBlocks.map((b, i) => (
-          <ul class="jt-block" style={`--x:${b.x};--w:${b.w};--b:${b.bottom}`} data-period={i === 0 || journeyBlocks[i - 1].period !== b.period ? b.period : undefined}>
-            {b.items.map((t) => <li set:html={t} />)}
-          </ul>
-        ))}
+      <!-- Timeline artwork from Coach Daru (Indonesian), shown as-is as lossless PNG. -->
+      <div class="journey-art">
+        <Img src={photo["journey-id"]} alt="Perjalanan Hijrah Coach 2011–2016, 2017–2019, 2020–2025: dari 1.000+ korporasi & UMKM dan akreditasi ICF, WABC, MyBrain; firm-based coaching company, 11 firma & 50 associate coach, sertifikasi di 3 negara; hingga MCC & ICE-AC, 26 firma & 170+ associate coach, 1.600+ coach tersertifikasi, peluncuran HADE & HADE-AI" widths={[1848]} sizes="(min-width: 1240px) 1240px, 100vw" format="png" />
       </div>
     </div>
   </section>
@@ -186,23 +147,7 @@ const unitFocus: Record<string, string> = { abc: "52% 28%", hade: "50% 28%", coa
   .presence p { margin-top: 0.4rem; font-family: var(--serif); font-size: 1.25rem; color: rgba(255, 255, 255, 0.88); }
   @media (min-width: 900px) { .big-stats { grid-template-columns: repeat(4, 1fr); } .presence { grid-template-columns: 1fr 1fr; } }
 
-  /* Phone: artwork first, then the copy as a plain list under period labels. */
-  .jt { display: grid; gap: 1rem; }
-  .jt :global(.jt-art) { width: 100%; height: auto; }
-  .jt-block { display: grid; gap: 0.5rem; }
-  .jt-block[data-period]::before { content: attr(data-period); font-family: var(--serif); font-weight: 800; font-size: 1.2rem; color: var(--gold-deep); }
-  .jt-block li { position: relative; padding-left: 1rem; font-size: 0.9rem; line-height: 1.45; color: var(--ink-soft); }
-  .jt-block li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 6px; height: 1px; background: var(--gold-deep); }
-  .jt-block :global(b) { color: var(--ink); font-weight: 800; }
-  /* Desktop: copy sits on the artwork; sizes scale with the container so the layout holds at any width. */
-  @media (min-width: 900px) {
-    .jt { position: relative; display: block; aspect-ratio: 1776 / 1028; container-type: inline-size; }
-    .jt :global(.jt-art) { position: absolute; left: 0; top: calc(130 / 1028 * 100%); }
-    .jt-block { position: absolute; left: calc(var(--x) / 1776 * 100%); width: calc(var(--w) / 1776 * 100%); bottom: calc(var(--b) / 1028 * 100%); gap: 0.25cqw; }
-    .jt-block::before { display: none; }
-    .jt-block li { font-size: 1.1cqw; line-height: 1.38; padding-left: 0.95cqw; }
-    .jt-block li::before { width: 0.45cqw; }
-  }
+  .journey-art :global(img) { width: 100%; height: auto; }
 
   .mc { display: grid; gap: 2rem; align-items: center; }
   .mc :global(.mc-img) { width: 220px; height: auto; border-radius: 50%; background: var(--stone); aspect-ratio: 1; object-fit: cover; object-position: 50% 10%; }
