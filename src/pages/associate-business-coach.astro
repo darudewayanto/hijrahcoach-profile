@@ -5,7 +5,7 @@ import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url";
 import { photo, brand } from "../lib/assets";
-import { wa, abcBenefits, abcTotal, abcInvestment, roadmap, masteries, competencies, abcSteps, abcFaq, certifications } from "../data/site";
+import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certifications } from "../data/site";
 ---
 <Base title="Associate Business Coach Program" description="Associate Business Coach (ABC) Program Hijrah Coach: 16 benefit senilai Rp285,5 juta, termasuk 5 sertifikasi internasional (ICF, ICAgile, MyBrain), mentoring Master Coach, dan support bisnis coaching. Investasi Rp40 juta.">
   <PageHero
@@ -112,26 +112,9 @@ import { wa, abcBenefits, abcTotal, abcInvestment, roadmap, masteries, competenc
         <h2 class="h-lg">Dari Bronze<br />sampai Gold</h2>
         <p class="lead">Setiap level berlangsung 3 bulan dalam 3 jalur kompetensi, dibangun di atas fondasi Agile–Lean Practitioner: mindset, value & principle.</p>
       </div>
-      <div class="road">
-        {roadmap.map((r) => (
-          <div class="track">
-            <h3 class="caps">{r.track}</h3>
-            <ol>
-              {r.levels.map((l, i) => (
-                <li class={["bronze", "silver", "gold"][i]}>
-                  <span class="lvl">{["Bronze", "Silver", "Gold"][i]}</span>
-                  <b>{l.replace(/^(Bronze|Silver|Gold) /, "")}</b>
-                  <small>Master Class · 3 bulan</small>
-                </li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
-      <div class="base">
-        <div class="pill-row">{masteries.map((m) => <span>{m}</span>)}</div>
-        <div class="pill-row soft">{competencies.map((m) => <span>{m} competency</span>)}</div>
-        <div class="foundation caps">Agile–Lean Practitioner · Fully accredited</div>
+      <!-- Roadmap artwork from Coach Daru, shown as-is on a white panel (it is drawn for a light background). -->
+      <div class="road-art">
+        <Img src={photo["roadmap"]} alt="Roadmap kompetensi: Coaching, Mentoring & Facilitating, MyBrain Practitioner, dan Training & Instructor, masing-masing 3 bulan Bronze, Silver, Gold Master Class menuju Master Hijrah Coach. Fully accredited by ICF, ICAgile, MyBrain" widths={[900, 1400, 1794]} sizes="(min-width: 1240px) 1160px, 100vw" />
       </div>
     </div>
   </section>
@@ -218,23 +201,8 @@ import { wa, abcBenefits, abcTotal, abcInvestment, roadmap, masteries, competenc
   .meta { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; color: var(--ink-soft); }
   @media (min-width: 800px) { .cert-list li { grid-template-columns: 6rem 1fr 9rem 7rem; } .code { grid-row: auto; } }
 
-  .road { display: grid; gap: 1.2rem; }
-  .track { border: 1px solid var(--line-dark); border-radius: 16px; padding: 1.4rem; }
-  .track h3 { font-size: 0.74rem; color: var(--gold-2); margin-bottom: 1rem; }
-  .track ol { display: grid; gap: 0.6rem; }
-  .track li { display: grid; gap: 0.1rem; padding: 0.9rem 1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border-left: 3px solid var(--c); }
-  .track li.bronze { --c: #a97b52; }
-  .track li.silver { --c: #c4c2bd; }
-  .track li.gold { --c: var(--gold-2); }
-  .lvl { font-size: 0.64rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c); }
-  .track b { font-family: var(--serif); font-size: 1.15rem; }
-  .track small { font-size: 0.74rem; color: rgba(255, 255, 255, 0.55); }
-  .base { display: grid; gap: 0.8rem; justify-items: center; margin-top: 2rem; }
-  .pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-  .pill-row span { padding: 0.5rem 1rem; border-radius: 999px; background: var(--gold); color: var(--ink); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-  .pill-row.soft span { background: transparent; border: 1px solid var(--line-dark); color: rgba(255, 255, 255, 0.8); text-transform: none; letter-spacing: 0; font-weight: 600; }
-  .foundation { width: 100%; text-align: center; padding: 0.9rem; border-radius: 10px; background: rgba(255, 255, 255, 0.06); font-size: 0.74rem; color: rgba(255, 255, 255, 0.8); }
-  @media (min-width: 900px) { .road { grid-template-columns: repeat(3, 1fr); } }
+  .road-art { border-radius: 18px; background: #fff; padding: clamp(1rem, 3vw, 2.2rem); }
+  .road-art :global(img) { width: 100%; height: auto; }
 
   .steps-grid { display: grid; gap: 3rem; align-items: center; }
   .steps-photo :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; }
