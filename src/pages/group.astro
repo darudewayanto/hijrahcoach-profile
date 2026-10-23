@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-import PageHero from "../components/PageHero.astro";
 import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import Accreditation from "../components/Accreditation.astro";
@@ -12,16 +11,27 @@ import { site, wa, units, stats, countries, partnerCountries, journey, masterCre
 const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "class-grey", hade: "summit-panel", coa: "mou", mybrain: "flipchart" };
 ---
 <Base title="Hijrah Coach Group" description="Hijrah Coach Group: 5 core business unit — Agile Hijrah Coaching, Associate Business Coaching, HADE, Center of Agility, dan MyBrain Indonesia. 28 firma, 180 associate coach, 1.800+ lulusan di 5 negara.">
-  <PageHero
-    eyebrow="Hijrah Coach .Group"
-    title="Satu Group,<br/>Lima Kekuatan"
-    lead="Business subsidiaries & competencies yang saling menguatkan: dari sertifikasi coach dan beasiswa umat, sampai agile transformation korporasi, kampus, dan applied-neuroscience."
-    img="summit"
-    imgAlt="Hijrah Coaching Summit bersama para coach"
-  >
-    <a class="btn btn-ink" href="#unit">Lihat 5 unit <Icon name="arrow-right" size={16} /></a>
-    <a class="btn btn-line" href={wa("corporate")} target="_blank" rel="noopener">Kerja sama korporasi</a>
-  </PageHero>
+  <!-- Hero: the group structure diagram is artwork for a dark background, shown whole and unaltered -->
+  <section class="gh">
+    <div class="wrap">
+      <div class="gh-panel on-dark">
+        <div class="gh-text" data-reveal>
+          <div>
+            <p class="caps gh-eb">Hijrah Coach .Group</p>
+            <h1 class="h-xl">Satu Group,<br />Lima Kekuatan</h1>
+          </div>
+          <div class="gh-side">
+            <p class="lead">Business subsidiaries & competencies yang saling menguatkan: dari sertifikasi coach dan beasiswa umat, sampai agile transformation korporasi, kampus, dan applied-neuroscience.</p>
+            <div class="btn-row">
+              <a class="btn btn-gold" href="#unit">Lihat 5 unit <Icon name="arrow-right" size={16} /></a>
+              <a class="btn btn-line" href={wa("corporate")} target="_blank" rel="noopener">Kerja sama korporasi</a>
+            </div>
+          </div>
+        </div>
+        <Img src={photo["group-structure"]} alt="Struktur Hijrah Coach Group: Agile Hijrah Coaching, Associate Business Coaching Program, HADE, Center of Agility, dan MyBrain; FOC & ABC Program dengan 28 firma, 180 associate coach, 1.800+ lulusan di Indonesia, Hong Kong, Qatar, Saudi Arabia, dan Australia" widths={[800, 1200, 1644]} sizes="(min-width: 1240px) 1160px, 100vw" loading="eager" class="gh-img" />
+      </div>
+    </div>
+  </section>
 
   <section class="section" id="unit">
     <div class="wrap">
@@ -104,6 +114,13 @@ const unitPhoto: Record<string, string> = { ahc: "class-wide", abc: "class-grey"
 </Base>
 
 <style>
+  .gh { padding-top: clamp(1rem, 2vw, 1.5rem); }
+  .gh-panel { display: grid; gap: clamp(2rem, 4vw, 3rem); border-radius: 20px; background: var(--ink-2); padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem); overflow: hidden; }
+  .gh-text { display: grid; gap: 1.6rem; align-items: end; }
+  .gh-eb { font-size: 0.78rem; color: var(--gold-2); margin-bottom: 1rem; }
+  .gh-side { display: grid; gap: 1.4rem; justify-items: start; }
+  .gh-panel :global(.gh-img) { width: 100%; height: auto; }
+  @media (min-width: 900px) { .gh-text { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; } }
   .units { display: grid; gap: clamp(1.2rem, 2vw, 1.6rem); }
   .unit { display: grid; border-radius: 18px; overflow: hidden; background: #fff; border: 1px solid var(--line); transition: transform 0.35s var(--ease), box-shadow 0.35s; }
   .unit:hover { transform: translateY(-4px); box-shadow: 0 28px 48px -30px rgba(21, 20, 19, 0.45); }
