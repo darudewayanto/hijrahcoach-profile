@@ -62,7 +62,7 @@ export const certifications = [
     accreditor: "ICAgile",
     hours: "22 jam",
     mode: "Offline",
-    photo: "demo-blue",
+    photo: "cert-achc",
     summary:
       "Foundation of Agile Coaching, Leader as Agile Coach, dan kompetensi sertifikasi agile coaching. Terakreditasi ICAgile (International Consortium for Agile) setelah menyelesaikan Fundamental dan Modul 1.",
   },
@@ -73,7 +73,7 @@ export const certifications = [
     accreditor: "ICF",
     hours: "67 jam · 2 modul",
     mode: "Offline",
-    photo: "demo-white",
+    photo: "cert-cbhc",
     summary:
       "Program kompetensi coaching bersertifikat internasional: teknik advance coaching 1-on-1 dan team/group coaching berbasis 8 Core Competencies ICF. Memenuhi ICF Level 1 setelah menyelesaikan 2 modul.",
   },
@@ -84,7 +84,7 @@ export const certifications = [
     accreditor: "MyBrain International · CCE ICF",
     hours: "22 jam",
     mode: "Offline",
-    photo: "class-grey",
+    photo: "cert-chmp",
     summary:
       "Applied-neuroscience tentang neurological dominance (MiND) sebagai practitioner untuk agility. Terakreditasi MyBrain International Limited (UK) dan CCE (Continuing Coaching Education) ICF.",
   },
@@ -95,7 +95,7 @@ export const certifications = [
     accreditor: "Hijrah Coach",
     hours: "33 jam",
     mode: "Online",
-    photo: "associate-teach",
+    photo: "cert-pbhc",
     summary:
       "Sertifikasi eksklusif untuk Firm Owner Coach & Associate Coach: bagaimana sukses menjadi professional coach, membangun praktik, klien, dan bisnis coaching.",
   },
@@ -106,7 +106,7 @@ export const certifications = [
     accreditor: "Hijrah Coach",
     hours: "4 minggu",
     mode: "Online",
-    photo: "flipchart",
+    photo: "cert-cbhf",
     summary:
       "Sertifikasi coach untuk menghantarkan 90 Day Coaching Framework, menumbuhkan pemilik usaha mikro & kecil dalam 90 hari.",
   },
