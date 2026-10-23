@@ -112,9 +112,9 @@ import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certificati
         <h2 class="h-lg">Dari Bronze<br />sampai Gold</h2>
         <p class="lead">Setiap level berlangsung 3 bulan dalam 3 jalur kompetensi, dibangun di atas fondasi Agile–Lean Practitioner: mindset, value & principle.</p>
       </div>
-      <!-- Roadmap artwork from Coach Daru, shown as-is on a white panel (it is drawn for a light background). -->
+      <!-- Roadmap artwork from Coach Daru, shown as-is on the dark section (transparent background, empty margins trimmed). -->
       <div class="road-art">
-        <Img src={photo["roadmap"]} alt="Roadmap kompetensi: Coaching, Mentoring & Facilitating, MyBrain Practitioner, dan Training & Instructor, masing-masing 3 bulan Bronze, Silver, Gold Master Class menuju Master Hijrah Coach. Fully accredited by ICF, ICAgile, MyBrain" widths={[900, 1400, 1794]} sizes="(min-width: 1240px) 1160px, 100vw" />
+        <Img src={photo["roadmap"]} alt="Roadmap kompetensi: Coaching, Mentoring & Facilitating, MyBrain Practitioner, dan Training & Instructor, masing-masing 3 bulan Bronze, Silver, Gold Master Class menuju Master Hijrah Coach. Fully accredited by ICF, ICAgile, MyBrain" widths={[900, 1400]} sizes="(min-width: 1240px) 1160px, 100vw" />
       </div>
     </div>
   </section>
@@ -201,7 +201,7 @@ import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certificati
   .meta { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; color: var(--ink-soft); }
   @media (min-width: 800px) { .cert-list li { grid-template-columns: 6rem 1fr 9rem 7rem; } .code { grid-row: auto; } }
 
-  .road-art { border-radius: 18px; background: #fff; padding: clamp(1rem, 3vw, 2.2rem); }
+  .road-art { margin-top: 0.5rem; }
   .road-art :global(img) { width: 100%; height: auto; }
 
   .steps-grid { display: grid; gap: 3rem; align-items: center; }
