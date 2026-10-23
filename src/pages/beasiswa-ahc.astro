@@ -53,7 +53,7 @@ const pics = Object.keys(ahcEventImg).sort();
     <div class="wrap about">
       <div>
         <span class="eyebrow">About the program</span>
-        <h2 class="h-lg" style="margin:1rem 0 1.4rem">Agile Coaching<br />Certification Program</h2>
+        <h2 class="h-lg about-title" style="margin:1rem 0 1.4rem"><span>Agile Hijrah Coaching</span> <span>Certification Program</span></h2>
         <p class="lead">Untuk {ahc.audience.toLowerCase()} Agile Hijrah Coaching membawa 15 tahun pengalaman agile coaching Hijrah Coach ke pondok, sekolah, dan lembaga dakwah di seluruh Indonesia.</p>
         <div class="acc">
           <span class="caps">Kurikulum mengacu standar</span>
@@ -169,6 +169,9 @@ const pics = Object.keys(ahcEventImg).sort();
   .stats li:first-child span { color: var(--ink); }
   @media (min-width: 900px) { .stats { grid-template-columns: repeat(5, 1fr); } .stats li:first-child { grid-column: auto; } }
 
+  /* Two fixed lines on desktop. */
+  .about-title { font-size: clamp(2rem, 3.4vw, 3rem); }
+  @media (min-width: 900px) { .about-title span { display: block; white-space: nowrap; } }
   .about { display: grid; gap: 3rem; align-items: center; }
   .acc { display: grid; gap: 0.7rem; margin-top: 2rem; }
   .acc .caps { font-size: 0.7rem; color: var(--grey); }
