@@ -61,7 +61,7 @@ const pics = Object.keys(ahcEventImg).sort();
         </div>
       </div>
       <div class="about-photo">
-        <Img src={photo["sunset-stage"]} alt="Coach Daru memimpin kelas AHC" widths={[600, 1000, 1400]} sizes="(min-width: 900px) 50vw, 100vw" class="mono" />
+        <Img src={photo["ahc-about"]} alt="Coach Daru bersama para coach dan mitra di panggung Agile Hijrah Coaching" widths={[600, 1000, 1400]} sizes="(min-width: 900px) 50vw, 100vw" class="mono" />
       </div>
     </div>
   </section>
@@ -174,7 +174,7 @@ const pics = Object.keys(ahcEventImg).sort();
   .acc .caps { font-size: 0.7rem; color: var(--grey); }
   .acc div { display: flex; gap: 0.6rem; flex-wrap: wrap; }
   .acc div span { padding: 0.5rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.06em; }
-  .about-photo :global(img) { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 18px; }
+  .about-photo :global(img) { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; object-position: 50% 60%; border-radius: 18px; }
   @media (min-width: 900px) { .about { grid-template-columns: 1fr 1fr; gap: 5rem; } }
 
   .who { display: grid; gap: 1rem; }
