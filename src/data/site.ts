@@ -187,11 +187,22 @@ export const ahc = {
   stats: [
     { value: "1.000", label: "Target beasiswa" },
     { value: "350+", label: "Lulusan" },
-    { value: "30+", label: "Batch" },
-    { value: "9", label: "Chapter" },
+    { value: "30", label: "Batch" },
+    { value: "8", label: "Chapter" },
     { value: "100+", label: "Pondok, sekolah & lembaga dakwah" },
   ],
-  cities: ["Aceh", "Jakarta", "Bandung", "Solo", "Salatiga", "Jogja", "Purwokerto", "Surabaya", "Jember", "Maros"],
+  cities: ["Aceh", "Jakarta", "Bandung", "Sumedang", "Solo", "Salatiga", "Jogja", "Purwokerto", "Surabaya", "Jember", "Maros", "Madinah"],
+  // Chapter partner logos (Dropbox "*AHC/Chapter"), file name = order + slug in src/assets/chapters.
+  chapters: [
+    { logo: "1-mushaira", name: "Mushaira · Yayasan Mush'ab bin Umair Indonesia" },
+    { logo: "2-muslimah-community", name: "Muslimah Community" },
+    { logo: "3-utsman-akademi", name: "Utsman Akademi" },
+    { logo: "4-muslimah-academy", name: "Muslimah Academy" },
+    { logo: "5-yayasan-salman", name: "Yayasan Salman Surabaya" },
+    { logo: "6-ummaa-nafs", name: "Ummaa Nafs" },
+    { logo: "7-gen-tangguh", name: "GenTangguh" },
+    { logo: "8-hsi", name: "HSI AbdullahRoy" },
+  ],
   accreditors: ["ICF", "ICAgile", "MyBrain"],
   outcomes: [
     { title: "Agile mindset untuk lembaga", text: "Memimpin pondok, sekolah, dan lembaga dakwah dengan nilai dan prinsip agile: adaptif, kolaboratif, berorientasi hasil." },
