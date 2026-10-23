@@ -18,7 +18,7 @@ Astro static site, Bahasa Indonesia. Dev server: `hijrahcoach-website` (port 432
 ## Checklist go-live
 - [ ] Testimoni associate coach & alumni AHC (menyusul dari Coach Daru)
 - [ ] Domain & hosting (kandidat hijrahcoach.co.id) — sementara di GitHub Pages (noindex)
-- [x] AHC: 8 chapter, 12 kota (+Madinah, Sumedang), 30 batch — konfirmasi Coach Daru 23 Okt 2026
+- [x] AHC: 8 chapter, 13 kota (+Madinah, Sumedang, Cianjur), 30 batch — konfirmasi Coach Daru 23 Okt 2026
 - [ ] Konfirmasi akreditasi PBHC (compro: "design by Hijrah Coach, accredited by MyBrain International" — posisi kalimat ambigu; saat ini ditulis "Didesain oleh Hijrah Coach")
 - [x] Logo 8 chapter AHC tampil (dari Dropbox *AHC/Chapter, termasuk HSI AbdullahRoy)
 - [ ] Link MyBrain diganti ke mybrain.id setelah domain aktif

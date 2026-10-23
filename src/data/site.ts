@@ -191,7 +191,7 @@ export const ahc = {
     { value: "8", label: "Chapter" },
     { value: "100+", label: "Pondok, sekolah & lembaga dakwah" },
   ],
-  cities: ["Aceh", "Jakarta", "Bandung", "Sumedang", "Solo", "Salatiga", "Jogja", "Purwokerto", "Surabaya", "Jember", "Maros", "Madinah"],
+  cities: ["Aceh", "Jakarta", "Bandung", "Sumedang", "Cianjur", "Solo", "Salatiga", "Jogja", "Purwokerto", "Surabaya", "Jember", "Maros", "Madinah"],
   // Chapter partner logos (Dropbox "*AHC/Chapter"), file name = order + slug in src/assets/chapters.
   chapters: [
     { logo: "1-mushaira", name: "Mushaira · Yayasan Mush'ab bin Umair Indonesia" },
