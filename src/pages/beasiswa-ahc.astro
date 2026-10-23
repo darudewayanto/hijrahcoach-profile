@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url";
-import { photo, brand } from "../lib/assets";
+import { photo, brand, ahcEventImg } from "../lib/assets";
 import { site, wa, ahc } from "../data/site";
 
 const who = [
@@ -20,7 +20,8 @@ const flow = [
   { title: "Jadi penggerak chapter", text: "Alumni melanjutkan ke kredensial internasional dan menggerakkan chapter di daerahnya." },
 ];
 
-const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "handshake", "class-plaid"];
+// Event photos from Dropbox "*AHC/Event" (resized to 1400px), shown as a grid of small tiles.
+const pics = Object.keys(ahcEventImg).sort();
 ---
 <Base title="Beasiswa Agile Hijrah Coaching (AHC)" description="Agile Hijrah Coaching (AHC): gerakan 1.000 beasiswa agile coaching certification untuk ustadz/ah dan pemimpin organisasi dakwah, pendidikan, dan kemanusiaan. 350+ lulusan, 30+ batch, 9 chapter.">
   <!-- Dark hero for the movement -->
@@ -132,14 +133,18 @@ const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "
     </div>
   </section>
 
-  <!-- Mosaic -->
+  <!-- Event gallery -->
   <section class="section-sm">
     <div class="wrap">
-      <div class="mosaic">
-        {pics.map((p, i) => (
-          <Img src={photo[p]} alt="Dokumentasi kegiatan Agile Hijrah Coaching" widths={[400, 800, 1200]} sizes="(min-width: 900px) 33vw, 50vw" class:list={["mono mono-hover", `m${i}`]} />
-        ))}
+      <div class="head center">
+        <span class="eyebrow">Dokumentasi batch AHC</span>
+        <h2 class="h-md">Dari kelas ke kelas, kota ke kota</h2>
       </div>
+      <ul class="tiles">
+        {pics.map((p) => (
+          <li><Img src={ahcEventImg[p]} alt="Dokumentasi kegiatan Agile Hijrah Coaching" widths={[240, 420]} sizes="(min-width: 1100px) 170px, (min-width: 640px) 24vw, 32vw" class="mono mono-hover" /></li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -206,8 +211,10 @@ const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "
   @media (min-width: 640px) { .flow { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1000px) { .flow { grid-template-columns: repeat(4, 1fr); } }
 
-  .mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-  .mosaic :global(img) { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; aspect-ratio: 4 / 3; }
-  .mosaic :global(.m0) { grid-row: span 2; aspect-ratio: auto; object-position: 50% 30%; }
-  @media (min-width: 900px) { .mosaic { grid-template-columns: repeat(3, 1fr); } }
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+  .tiles li { aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--stone); }
+  .tiles :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .tiles li:hover :global(img) { transform: scale(1.05); }
+  @media (min-width: 640px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.65rem; } }
+  @media (min-width: 1100px) { .tiles { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 </style>
