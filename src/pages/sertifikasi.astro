@@ -3,7 +3,6 @@ import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
-import CtaBand from "../components/CtaBand.astro";
 import Accreditation from "../components/Accreditation.astro";
 import { u } from "../lib/url";
 import { photo, brand } from "../lib/assets";
@@ -14,9 +13,10 @@ import { wa, certifications } from "../data/site";
     eyebrow="Agile Coaching Accredited Certification"
     title="5 Sertifikasi<br/>Kelas Dunia"
     lead="The only in Asia & Australia: pemegang akreditasi agile coaching certification dari 3 organisasi besar dunia, ICAgile, ICF, dan MyBrain International."
-    img="demo-white"
-    imgAlt="Demo coaching 1-on-1 di kelas sertifikasi"
-    position="62% 40%"
+    img="panel-speakers-wide"
+    imgAlt="Coach Daru bersama para coach di kelas Agile Hijrah Coaching Certification"
+    position="50% 30%"
+    softFade
   >
     <a class="btn btn-ink" href={wa("certification")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Tanya jadwal batch</a>
     <a class="btn btn-line" href={u("/associate-business-coach")}>Ambil semua via ABC</a>
@@ -74,7 +74,6 @@ import { wa, certifications } from "../data/site";
   </section>
 
   <Accreditation />
-  <CtaBand />
 </Base>
 
 <style>

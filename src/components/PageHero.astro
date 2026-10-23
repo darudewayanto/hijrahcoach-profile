@@ -2,8 +2,8 @@
 import Img from "./Img.astro";
 import { photo } from "../lib/assets";
 
-interface Props { eyebrow: string; title: string; lead: string; img: string; imgAlt: string; position?: string }
-const { eyebrow, title, lead, img, imgAlt, position = "50% 35%" } = Astro.props;
+interface Props { eyebrow: string; title: string; lead: string; img: string; imgAlt: string; position?: string; softFade?: boolean }
+const { eyebrow, title, lead, img, imgAlt, position = "50% 35%", softFade = false } = Astro.props;
 ---
 <section class="ph">
   <div class="wrap">
@@ -14,7 +14,7 @@ const { eyebrow, title, lead, img, imgAlt, position = "50% 35%" } = Astro.props;
         <p class="lead">{lead}</p>
         <div class="btn-row"><slot /></div>
       </div>
-      <div class="ph-photo">
+      <div class:list={["ph-photo", { soft: softFade }]}>
         <Img src={photo[img]} alt={imgAlt} widths={[640, 1000, 1400, 2000]} sizes="(min-width: 900px) 62vw, 100vw" loading="eager" class="mono" style={`object-position:${position}`} />
       </div>
     </div>
@@ -26,6 +26,7 @@ const { eyebrow, title, lead, img, imgAlt, position = "50% 35%" } = Astro.props;
   .ph-panel { position: relative; display: grid; overflow: hidden; border-radius: 20px; background: linear-gradient(100deg, var(--paper), var(--cream-2)); }
   .ph-text { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
   .eb { font-size: 0.78rem; color: var(--ink-soft); }
+  .ph-text :global(h1) { font-size: clamp(2.8rem, 6.4vw, 5.4rem); }
   .ph-photo { position: relative; min-height: 280px; }
   .ph-photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   @media (min-width: 900px) {
@@ -33,5 +34,8 @@ const { eyebrow, title, lead, img, imgAlt, position = "50% 35%" } = Astro.props;
     .ph-text { max-width: 640px; }
     .ph-photo { position: absolute; inset: 0 0 0 44%; }
     .ph-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.7) 22%, transparent 50%); }
+    /* For photos whose subject sits at the left edge: keep the fade narrow so the subject stays visible. */
+    .ph-photo.soft { inset: 0 0 0 49%; }
+    .ph-photo.soft::before { background: linear-gradient(90deg, var(--paper) 0%, rgba(248, 245, 239, 0.4) 6%, transparent 16%); }
   }
 </style>

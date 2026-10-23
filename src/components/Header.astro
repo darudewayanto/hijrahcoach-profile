@@ -3,7 +3,7 @@ import { u } from "../lib/url";
 import Img from "./Img.astro";
 import Icon from "./Icon.astro";
 import { brand } from "../lib/assets";
-import { nav, wa } from "../data/site";
+import { nav, wa, site } from "../data/site";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const path = Astro.url.pathname.slice(base.length).replace(/\/$/, "") || "/";
@@ -22,7 +22,6 @@ const right = nav.slice(3);
 
     <a href={u("/")} class="brand" aria-label="Hijrah Coach — beranda">
       <Img src={brand["hijrah-hor-gold"]} alt="Hijrah Coach" width={210} loading="eager" />
-      <span class="brand-sub">Internationally accredited business coaching firm</span>
     </a>
 
     <nav class="links right" aria-label="Lainnya">
@@ -52,7 +51,7 @@ const right = nav.slice(3);
     </nav>
     <div class="btn-row">
       <a class="btn btn-ink" href={wa("abc")} target="_blank" rel="noopener">Daftar ABC <Icon name="arrow-right" size={16} /></a>
-      <a class="btn btn-line" href={wa("ahc")} target="_blank" rel="noopener">Beasiswa AHC</a>
+      <a class="btn btn-line" href={site.ahcFormUrl} target="_blank" rel="noopener">Beasiswa AHC</a>
     </div>
   </div>
 </header>
@@ -71,7 +70,6 @@ const right = nav.slice(3);
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 78px; }
   .brand { display: grid; justify-items: center; gap: 0.3rem; }
   .brand :global(img) { width: clamp(160px, 16vw, 210px); height: auto; }
-  .brand-sub { display: none; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--grey); }
 
   .links { display: none; align-items: center; gap: 0.15rem; flex: 1; }
   .links.right { justify-content: flex-end; }
@@ -119,7 +117,6 @@ const right = nav.slice(3);
 
   @media (min-width: 1180px) {
     .links { display: flex; }
-    .brand-sub { display: block; }
     .toggle, .mobile { display: none !important; }
   }
 </style>

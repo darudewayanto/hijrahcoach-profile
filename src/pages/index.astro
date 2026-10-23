@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
-import CtaBand from "../components/CtaBand.astro";
 import ClientWall from "../components/ClientWall.astro";
 import { u } from "../lib/url";
 import { photo, brand, certImg } from "../lib/assets";
@@ -169,7 +168,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
             {ahc.stats.slice(1, 5).map((s) => <li><b>{s.value}</b><span>{s.label}</span></li>)}
           </ul>
           <div class="btn-row">
-            <a class="btn btn-gold" href={wa("ahc")} target="_blank" rel="noopener">Daftar beasiswa <Icon name="arrow-right" size={16} /></a>
+            <a class="btn btn-gold" href={site.ahcFormUrl} target="_blank" rel="noopener">Daftar beasiswa <Icon name="arrow-right" size={16} /></a>
             <a class="btn btn-line" href={u("/beasiswa-ahc")}>Tentang AHC</a>
           </div>
         </div>
@@ -231,7 +230,6 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
 
   <ClientWall />
 
-  <CtaBand />
 </Base>
 
 <style>

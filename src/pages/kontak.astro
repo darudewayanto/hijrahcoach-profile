@@ -5,10 +5,10 @@ import Icon from "../components/Icon.astro";
 import { photo } from "../lib/assets";
 import { site, wa, type WaTopic } from "../data/site";
 
-const topics: { topic: WaTopic; title: string; text: string }[] = [
+const topics: { topic: WaTopic; title: string; text: string; href?: string }[] = [
   { topic: "abc", title: "Daftar Associate Business Coach", text: "Info jadwal, akad, dan term of payment program ABC." },
   { topic: "certification", title: "Sertifikasi internasional", text: "ACHC, CBHC, CHMP, PBHC, atau CBHF: jadwal batch berikutnya." },
-  { topic: "ahc", title: "Beasiswa Agile Hijrah Coaching", text: "Untuk ustadz/ah & pemimpin lembaga dakwah, pendidikan, kemanusiaan." },
+  { topic: "ahc", title: "Daftar Beasiswa Agile Hijrah Coaching", text: "Formulir online untuk ustadz/ah & pemimpin lembaga dakwah, pendidikan, kemanusiaan.", href: site.ahcFormUrl },
   { topic: "ahcPartner", title: "Buka chapter AHC", text: "Lembaga Anda ingin menjadi tuan rumah chapter AHC." },
   { topic: "corporate", title: "Corporate & in-house", text: "Coaching, agile transformation, dan program korporasi." },
 ];
@@ -23,8 +23,8 @@ const topics: { topic: WaTopic; title: string; text: string }[] = [
         <ul class="topics">
           {topics.map((t) => (
             <li>
-              <a href={wa(t.topic)} target="_blank" rel="noopener">
-                <Icon name="whatsapp" size={22} />
+              <a href={t.href ?? wa(t.topic)} target="_blank" rel="noopener">
+                <Icon name={t.href ? "book" : "whatsapp"} size={22} />
                 <span><b>{t.title}</b><small>{t.text}</small></span>
                 <Icon name="arrow-up-right" size={18} />
               </a>

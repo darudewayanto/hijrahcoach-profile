@@ -11,6 +11,8 @@ export const site = {
   email: "salam@hijrahcoach.co.id",
   phoneDisplay: "+62 811 1881 877",
   whatsapp: "628111881877",
+  // Pendaftaran beasiswa AHC lewat Google Form (permintaan Coach Daru, 23 Okt 2026).
+  ahcFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfQ1ArEhF8vjV_Sy6b8YOO1qMSrUyr4F-9LUks0CYrQHeW6iA/viewform",
   masterCoachUrl: "https://coachdaru.belajaragile.com",
   hadeUrl: "https://hade.belajaragile.com",
   coaUrl: "https://coa.belajaragile.com",

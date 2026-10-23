@@ -2,10 +2,9 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
-import CtaBand from "../components/CtaBand.astro";
 import { u } from "../lib/url";
 import { photo, brand } from "../lib/assets";
-import { wa, ahc } from "../data/site";
+import { site, wa, ahc } from "../data/site";
 
 const who = [
   { icon: "mic", title: "Ustadz & ustadzah", text: "Para dai dan pengajar yang membina jamaah dan santri." },
@@ -15,7 +14,7 @@ const who = [
 ];
 
 const flow = [
-  { title: "Daftar via WhatsApp", text: "Kirim nama, lembaga, dan kota Anda. Tim AHC mengirim info batch dan syarat beasiswa." },
+  { title: "Isi formulir pendaftaran", text: "Lengkapi formulir online dengan data diri, lembaga, dan kota Anda. Tim AHC menghubungi Anda dengan info batch dan syarat beasiswa." },
   { title: "Seleksi & konfirmasi", text: "Prioritas bagi ustadz/ah dan pemimpin lembaga dakwah, pendidikan, dan kemanusiaan." },
   { title: "Ikuti kelas AHC", text: "Workshop agile coaching bersama Master Coach, tatap muka di chapter kota Anda." },
   { title: "Jadi penggerak chapter", text: "Alumni melanjutkan ke kredensial internasional dan menggerakkan chapter di daerahnya." },
@@ -33,7 +32,7 @@ const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "
       <h1 class="h-lg">Beasiswa agile coaching<br />untuk para penggerak umat</h1>
       <p class="lead">{ahc.mission}</p>
       <div class="btn-row">
-        <a class="btn btn-gold" href={wa("ahc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar beasiswa</a>
+        <a class="btn btn-gold" href={site.ahcFormUrl} target="_blank" rel="noopener">Daftar beasiswa <Icon name="arrow-up-right" size={16} /></a>
         <a class="btn btn-line" href={wa("ahcPartner")} target="_blank" rel="noopener">Buka chapter di kota Anda</a>
       </div>
     </div>
@@ -127,7 +126,7 @@ const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "
         ))}
       </ol>
       <div class="btn-row center">
-        <a class="btn btn-ink" href={wa("ahc")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> Daftar beasiswa AHC</a>
+        <a class="btn btn-ink" href={site.ahcFormUrl} target="_blank" rel="noopener">Isi formulir beasiswa AHC <Icon name="arrow-up-right" size={16} /></a>
         <a class="btn btn-line" href={wa("ahcPartner")} target="_blank" rel="noopener">Ajukan chapter lembaga</a>
       </div>
     </div>
@@ -144,7 +143,6 @@ const pics = ["portrait-stage", "demo-blue", "akhwat-class", "ustadz-sharing", "
     </div>
   </section>
 
-  <CtaBand title="Ingin jadi coach profesional setelah AHC?" text="Alumni AHC dapat melanjutkan ke Associate Business Coach Program: 5 sertifikasi internasional, mentoring Master Coach, dan support bisnis coaching." />
 </Base>
 
 <style>
