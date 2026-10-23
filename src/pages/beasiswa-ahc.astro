@@ -20,7 +20,7 @@ const flow = [
   { title: "Jadi penggerak chapter", text: "Alumni melanjutkan ke kredensial internasional dan menggerakkan chapter di daerahnya." },
 ];
 
-// Event photos from Dropbox "*AHC/Event" (resized to 1400px), shown as a grid of small tiles.
+// Event photos from Dropbox "*AHC/Event" (900px tall), laid out as justified rows: same height, natural width.
 const pics = Object.keys(ahcEventImg).sort();
 ---
 <Base title="Beasiswa Agile Hijrah Coaching (AHC)" description="Agile Hijrah Coaching (AHC): gerakan 1.000 beasiswa agile coaching certification untuk ustadz/ah dan pemimpin organisasi dakwah, pendidikan, dan kemanusiaan. 350+ lulusan, 30+ batch, 9 chapter.">
@@ -142,7 +142,7 @@ const pics = Object.keys(ahcEventImg).sort();
       </div>
       <ul class="tiles">
         {pics.map((p) => (
-          <li><Img src={ahcEventImg[p]} alt="Dokumentasi kegiatan Agile Hijrah Coaching" widths={[240, 420]} sizes="(min-width: 1100px) 170px, (min-width: 640px) 24vw, 32vw" class="mono mono-hover" /></li>
+          <li style={`--r:${(ahcEventImg[p].width / ahcEventImg[p].height).toFixed(3)}`}><Img src={ahcEventImg[p]} alt="Dokumentasi kegiatan Agile Hijrah Coaching" widths={[300, 600]} sizes="300px" class="mono mono-hover" /></li>
         ))}
       </ul>
     </div>
@@ -211,10 +211,12 @@ const pics = Object.keys(ahcEventImg).sort();
   @media (min-width: 640px) { .flow { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1000px) { .flow { grid-template-columns: repeat(4, 1fr); } }
 
-  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
-  .tiles li { aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--stone); }
-  .tiles :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-  .tiles li:hover :global(img) { transform: scale(1.05); }
-  @media (min-width: 640px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.65rem; } }
-  @media (min-width: 1100px) { .tiles { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+  /* Every photo shares one fixed height and keeps its natural width (full frame, no cropping);
+     rows are centred so the ragged ends stay balanced. */
+  .tiles { --h: 96px; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .tiles li { flex: none; height: var(--h); aspect-ratio: var(--r); border-radius: 8px; overflow: hidden; background: var(--stone); }
+  .tiles :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .tiles li:hover :global(img) { transform: scale(1.04); }
+  @media (min-width: 640px) { .tiles { --h: 130px; gap: 0.6rem; } }
+  @media (min-width: 1100px) { .tiles { --h: 150px; } }
 </style>
