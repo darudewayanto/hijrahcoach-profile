@@ -150,7 +150,7 @@ export const abcBenefits = [
 ];
 
 export const abcTotal = "Rp285.500.000";
-export const abcInvestment = "Rp40.000.000";
+export const abcInvestment = "Rp45.000.000";
 
 // Roadmap from the company profile: 3 competency tracks × Bronze/Silver/Gold (3 months each).
 export const roadmap = [
