@@ -21,7 +21,7 @@ const right = nav.slice(3);
     </nav>
 
     <a href={u("/")} class="brand" aria-label="Hijrah Coach — beranda">
-      <Img src={brand["hijrah-hor-gold"]} alt="Hijrah Coach" width={210} loading="eager" />
+      <Img src={brand["hijrah-hor-gold"]} alt="Hijrah Coach" width={250} loading="eager" />
     </a>
 
     <nav class="links right" aria-label="Lainnya">
@@ -69,7 +69,7 @@ const right = nav.slice(3);
   .site-header.scrolled, .site-header.open { box-shadow: 0 1px 0 var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 78px; }
   .brand { display: grid; justify-items: center; gap: 0.3rem; }
-  .brand :global(img) { width: clamp(160px, 16vw, 210px); height: auto; }
+  .brand :global(img) { width: clamp(180px, 18vw, 250px); height: auto; }
 
   .links { display: none; align-items: center; gap: 0.15rem; flex: 1; }
   .links.right { justify-content: flex-end; }
@@ -115,7 +115,7 @@ const right = nav.slice(3);
   }
   .mobile nav a.active { color: var(--gold-deep); }
 
-  @media (min-width: 1180px) {
+  @media (min-width: 1280px) {
     .links { display: flex; }
     .toggle, .mobile { display: none !important; }
   }
