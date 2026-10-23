@@ -2,15 +2,15 @@
 import Img from "./Img.astro";
 import { photo } from "../lib/assets";
 
-interface Props { eyebrow: string; title: string; lead: string; img: string; imgAlt: string; position?: string; softFade?: boolean }
-const { eyebrow, title, lead, img, imgAlt, position = "50% 35%", softFade = false } = Astro.props;
+interface Props { eyebrow: string; title: string; lead: string; img: string; imgAlt: string; position?: string; softFade?: boolean; compact?: boolean }
+const { eyebrow, title, lead, img, imgAlt, position = "50% 35%", softFade = false, compact = false } = Astro.props;
 ---
 <section class="ph">
   <div class="wrap">
     <div class="ph-panel">
       <div class="ph-text" data-reveal>
         <p class="caps eb">{eyebrow}</p>
-        <h1 class="h-xl" set:html={title} />
+        <h1 class:list={["h-xl", { compact }]} set:html={title} />
         <p class="lead">{lead}</p>
         <div class="btn-row"><slot /></div>
       </div>
@@ -27,6 +27,8 @@ const { eyebrow, title, lead, img, imgAlt, position = "50% 35%", softFade = fals
   .ph-text { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
   .eb { font-size: 0.78rem; color: var(--ink-soft); }
   .ph-text :global(h1) { font-size: clamp(2.8rem, 6.4vw, 5.4rem); }
+  /* Longer titles: smaller size so they stay within ~4 lines. */
+  .ph-text :global(h1.compact) { font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
   .ph-photo { position: relative; min-height: 280px; }
   .ph-photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   @media (min-width: 900px) {
