@@ -8,10 +8,10 @@ import { photo, brand, certImg } from "../lib/assets";
 import { site, wa, stats, certifications, abcBenefits, abcTotal, abcInvestment, ahc, units, masterCredentials } from "../data/site";
 
 const strip = [
-  { title: "Associate Business Coach", text: "16 benefit, dari sertifikasi sampai bisnis coaching.", img: "class-grey", href: u("/associate-business-coach"), cta: "Lihat program" },
-  { title: "Sertifikasi Internasional", text: "ICF, ICAgile & MyBrain dalam satu jalur.", img: "demo-blue", href: u("/sertifikasi"), cta: "5 sertifikasi" },
-  { title: "Beasiswa AHC", text: "1.000 beasiswa agile coaching untuk umat.", img: "workshop-akhwat", href: u("/beasiswa-ahc"), cta: "Daftar beasiswa" },
-  { title: "Hijrah Coach Group", text: "HADE, MyBrain, COA & ekosistem kami.", img: "summit", href: u("/group"), cta: "Kenali group" },
+  { title: "Associate Business Coach", text: "16 benefit, dari sertifikasi sampai bisnis coaching.", img: "abc-hero", pos: "52% 25%", href: u("/associate-business-coach"), cta: "Lihat program" },
+  { title: "Sertifikasi Internasional", text: "ICF, ICAgile & MyBrain dalam satu jalur.", img: "panel-speakers-wide", pos: "22% 35%", href: u("/sertifikasi"), cta: "5 sertifikasi" },
+  { title: "Beasiswa AHC", text: "1.000 beasiswa agile coaching untuk umat.", img: "class-wide", pos: "55% 45%", href: u("/beasiswa-ahc"), cta: "Daftar beasiswa" },
+  { title: "Hijrah Coach Group", text: "HADE, MyBrain, COA & ekosistem kami.", img: "ahc-about", pos: "30% 50%", href: u("/group"), cta: "Kenali group" },
 ];
 
 const features = [
@@ -56,7 +56,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
       <div class="strip on-dark">
         {strip.map((s) => (
           <a class="s-card" href={s.href}>
-            <span class="s-thumb"><Img src={photo[s.img]} alt="" widths={[180, 320]} sizes="120px" class="mono" /></span>
+            <span class="s-thumb"><Img src={photo[s.img]} alt="" widths={[180, 320]} sizes="120px" class="mono" style={`object-position:${s.pos}`} /></span>
             <span class="s-body">
               <span class="s-title caps">{s.title}</span>
               <span class="s-text">{s.text}</span>
@@ -279,15 +279,15 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
     padding: 0.75rem;
     box-shadow: 0 30px 60px -30px rgba(21, 20, 19, 0.5);
   }
-  .s-card { display: flex; gap: 1rem; align-items: center; padding: 0.85rem; border-radius: 12px; transition: background 0.3s; }
+  .s-card { display: flex; gap: 1rem; align-items: stretch; padding: 0.85rem; border-radius: 12px; transition: background 0.3s; }
   .s-card:hover { background: rgba(255, 255, 255, 0.05); }
-  .s-thumb { flex: none; width: 92px; height: 112px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); }
+  .s-thumb { flex: none; width: 92px; min-height: 112px; align-self: stretch; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); }
   .s-thumb :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
   .s-card:hover .s-thumb :global(img) { transform: scale(1.06); }
-  .s-body { display: grid; gap: 0.35rem; justify-items: start; }
-  .s-title { font-size: 0.92rem; letter-spacing: 0.12em; }
-  .s-text { font-family: var(--serif); font-size: 1rem; line-height: 1.25; color: rgba(255, 255, 255, 0.72); }
-  .s-body .btn { margin-top: 0.35rem; }
+  .s-body { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  .s-title { font-size: 0.92rem; letter-spacing: 0.12em; min-height: calc(2 * 1.45em); }
+  .s-text { font-family: var(--serif); font-size: 1rem; line-height: 1.25; color: rgba(255, 255, 255, 0.72); min-height: 2.5em; }
+  .s-body .btn { margin-top: auto; }
   @media (min-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 1280px) {
     .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
