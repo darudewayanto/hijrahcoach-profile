@@ -24,7 +24,7 @@ const features = [
 const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
 ---
 <Base>
-  <!-- HERO: giant wordmark (no figure, per Coach 26 Okt 2026) -->
+  <!-- HERO: giant wordmark "AGILE" (no figure, per Coach 26 Okt 2026) -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="intro" data-reveal>
@@ -34,7 +34,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
 
       <div class="stage">
         <h1 class="word" aria-label="Hijrah Coach — firma business coaching terakreditasi internasional">
-          <span aria-hidden="true">HIJRAH</span>
+          <span aria-hidden="true">AGILE</span>
         </h1>
       </div>
 
@@ -295,11 +295,12 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   .banner {
     position: relative;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     overflow: hidden;
     border-radius: 18px;
     background: linear-gradient(100deg, var(--paper) 0%, var(--cream-2) 100%);
   }
-  .b-text { position: relative; z-index: 2; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
+  .b-text { position: relative; z-index: 2; min-width: 0; display: grid; gap: 1.2rem; justify-items: start; padding: clamp(2rem, 5vw, 4rem); }
   .eyebrow-plain { font-size: 0.78rem; color: var(--ink-soft); }
   .b-value { display: flex; gap: 2rem; padding: 0.9rem 0; border-block: 1px solid var(--line); }
   .b-value div { display: grid; gap: 0.15rem; }
@@ -338,7 +339,7 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   }
 
   /* ---------- Certification grid ---------- */
-  .grid-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+  .grid-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
   .certs { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.9rem, 1.6vw, 1.25rem); }
   .cert { display: grid; gap: 0.3rem; align-content: start; }
   .c-img { position: relative; aspect-ratio: 386 / 604; margin-bottom: 0.6rem; }
@@ -357,14 +358,14 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   @media (min-width: 1000px) { .certs { grid-template-columns: repeat(5, 1fr); } }
 
   /* ---------- Value ---------- */
-  .v-grid { display: grid; gap: 3rem; align-items: center; }
+  .v-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; align-items: center; }
   .v-text { display: grid; gap: 1.4rem; justify-items: start; }
   .v-card { border: 1px solid var(--line-dark); border-radius: 18px; padding: clamp(1.4rem, 3vw, 2.2rem); background: rgba(255, 255, 255, 0.03); }
   .v-card ul { display: grid; }
   .v-card li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line-dark); font-size: 0.92rem; color: rgba(255, 255, 255, 0.82); }
   .v-card li b { flex: none; font-family: var(--serif); font-size: 1.05rem; color: #fff; }
   .v-card li.plus { color: var(--gold-2); }
-  .v-total { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.3rem; }
+  .v-total { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.3rem; }
   .v-total div { display: grid; gap: 0.2rem; }
   .v-total div:last-child { text-align: right; }
   .v-total .caps { font-size: 0.64rem; color: rgba(255, 255, 255, 0.55); }
@@ -412,10 +413,11 @@ const highlights = abcBenefits.filter((b) => b.value).slice(0, 7);
   @media (min-width: 1000px) { .units { grid-template-columns: repeat(5, 1fr); } .network { grid-template-columns: repeat(4, 1fr); } }
 
   /* ---------- Master Coach ---------- */
-  .mc { display: grid; border-radius: 22px; background: linear-gradient(160deg, var(--cream-2), var(--stone)); overflow: hidden; }
+  .mc { display: grid; grid-template-columns: minmax(0, 1fr); border-radius: 22px; background: linear-gradient(160deg, var(--cream-2), var(--stone)); overflow: hidden; }
   .mc-photo { display: flex; align-items: end; justify-content: center; padding-top: 2.5rem; }
   .mc-photo :global(img) { width: min(560px, 92%); height: auto; }
-  .mc-text { display: grid; gap: 1.1rem; justify-items: start; padding: clamp(1.8rem, 5vw, 4rem); }
+  .mc-text { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 1.1rem; justify-items: start; padding: clamp(1.8rem, 5vw, 4rem); }
+  .mc-text .btn { white-space: normal; text-align: left; }
   .creds { color: var(--gold-deep); font-size: 0.82rem; }
   .mc-list { display: grid; gap: 0.5rem; }
   .mc-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; }

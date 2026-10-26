@@ -71,6 +71,7 @@ table { border-collapse: collapse; width: 100%; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold-deep);
+  max-width: 100%;
 }
 .eyebrow::before { content: ""; width: 26px; height: 1px; background: currentColor; }
 .on-dark .eyebrow { color: var(--gold-2); }
