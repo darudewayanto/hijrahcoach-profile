@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy:firebase": "SITE_URL=https://hijrahcoach.belajaragile.com PUBLIC_NOINDEX=true astro build && npx -y firebase-tools@latest deploy --only hosting:hijrahcoach-belajaragile --project hade-community"
+    "deploy:firebase": "SITE_URL=https://hijrahcoach.belajaragile.com astro build && npx -y firebase-tools@latest deploy --only hosting:hijrahcoach-belajaragile --project hade-community"
   },
   "dependencies": {
     "astro": "^7.3.8"
