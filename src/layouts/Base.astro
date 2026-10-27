@@ -24,6 +24,7 @@ const noindex = import.meta.env.PUBLIC_NOINDEX === "true";
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="google-site-verification" content="SvR_Xx5XmqFDHl2AYEZzIzieFwzBfw-sfAFQhc-9uqk" />}
     <meta name="theme-color" content="#f1ece3" />
     <link rel="icon" type="image/png" href={u("/favicon.png")} />
     <link rel="apple-touch-icon" href={u("/apple-touch-icon.png")} />
