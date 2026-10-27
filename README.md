@@ -15,6 +15,8 @@ Astro static site, Bahasa Indonesia. Dev server: `hijrahcoach-website` (port 432
 ## Tayang sementara (GitHub Pages)
 `.github/workflows/deploy.yml` → repo publik `darudewayanto/hijrahcoach-profile` (noindex), live di https://darudewayanto.github.io/hijrahcoach-profile/ — push ke main = auto deploy.
 
+**LIVE di https://hijrahcoach.belajaragile.com (27 Okt 2026):** situs Firebase `hijrahcoach-belajaragile` (project hade-community). Deploy: `npm run deploy:firebase` — TIDAK otomatis dari git push (push hanya update GitHub Pages).
+
 ## Checklist go-live
 - [ ] Testimoni associate coach & alumni AHC (menyusul dari Coach Daru)
 - [ ] Domain & hosting (kandidat hijrahcoach.co.id) — sementara di GitHub Pages (noindex)
