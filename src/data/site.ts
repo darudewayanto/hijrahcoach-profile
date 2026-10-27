@@ -205,10 +205,10 @@ export const ahc = {
   ],
   accreditors: ["ICF", "ICAgile", "MyBrain"],
   outcomes: [
-    { title: "Agile mindset untuk lembaga", text: "Memimpin pondok, sekolah, dan lembaga dakwah dengan nilai dan prinsip agile: adaptif, kolaboratif, berorientasi hasil." },
-    { title: "Kompetensi coaching", text: "Mendengar aktif, bertanya powerful, membangun rapport, dan memfasilitasi tim, langsung dipraktikkan di kelas." },
+    { title: "Agile mindset untuk lembaga", text: "Menerapkan nilai dan prinsip agile dalam mengelola pondok, sekolah, dan lembaga dakwah." },
+    { title: "Kompetensi coaching", text: "Mendengar aktif, bertanya, membangun rapport, dan memfasilitasi tim. Semuanya dipraktikkan di kelas." },
     { title: "Kredensial internasional", text: "Jalur menuju kredensial agile coaching yang diakui ICF, ICAgile, dan MyBrain." },
-    { title: "Jaringan & chapter", text: "Bergabung dengan alumni dari berbagai kota dan menjadi penggerak chapter di daerah Anda." },
+    { title: "Jaringan & chapter", text: "Bergabung dengan alumni AHC di 13 kota dan ikut menggerakkan chapter di daerah Anda." },
   ],
 };
 

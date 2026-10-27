@@ -26,7 +26,7 @@ import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certificati
     <div class="wrap">
       <div class="summary">
         <div class="sum-badge">
-          <Img src={brand.abcp} alt="Agile Certified Hijrah Coach — ICAgile, ICF, MyBrain" width={150} />
+          <Img src={brand.abcp} alt="Agile Certified Hijrah Coach: ICAgile, ICF, MyBrain" width={150} />
         </div>
         <div><span class="caps">Total benefit</span><b>{abcTotal}</b></div>
         <div><span class="caps">Investasi ABC</span><b class="gold-d">{abcInvestment}</b></div>
@@ -44,7 +44,7 @@ import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certificati
           <span class="eyebrow">Benefit of Associate Business Coach</span>
           <h2 class="h-lg" style="margin-top:1rem">16 Benefit,<br />1 Investasi</h2>
         </div>
-        <p class="lead">Bandingkan yang Anda dapatkan sebagai <b>Certification Graduate</b> dan sebagai <b>Associate Business Coach</b>. Sembilan benefit terakhir tidak bisa dinilai dengan uang: sistem, tim, dan brand yang sudah terbukti 10 tahun.</p>
+        <p class="lead">Bandingkan yang Anda dapatkan sebagai <b>Certification Graduate</b> dan sebagai <b>Associate Business Coach</b>. Sembilan benefit terakhir berupa sistem, tim, dan brand Hijrah Coach, dan tidak dihitung dalam nilai rupiah.</p>
       </div>
 
       <div class="tbl" role="region" aria-label="Tabel benefit Associate Business Coach" tabindex="0">
@@ -128,8 +128,7 @@ import { wa, abcBenefits, abcTotal, abcInvestment, abcSteps, abcFaq, certificati
         <Img src={photo["abc-steps"]} alt="Coach Daru berbicara di panggung Entrepreneur Hub" widths={[600, 1000, 1400]} sizes="(min-width: 900px) 45vw, 100vw" class="mono" />
       </div>
       <div>
-        <span class="eyebrow">Cara bergabung</span>
-        <h2 class="h-lg" style="margin:1rem 0 2rem">4 Langkah<br />Menjadi ABC</h2>
+        <h2 class="h-lg" style="margin:0 0 2rem">4 Langkah<br />Menjadi ABC</h2>
         <ol class="steps">
           {abcSteps.map((s, i) => (
             <li><span class="num">{i + 1}</span><div><h3>{s.title}</h3><p class="muted">{s.text}</p></div></li>

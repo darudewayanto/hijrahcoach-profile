@@ -7,15 +7,14 @@ import { photo, brand, ahcEventImg, chapterImg } from "../lib/assets";
 import { site, wa, ahc } from "../data/site";
 
 const who = [
-  { icon: "mic", title: "Ustadz & ustadzah", text: "Para dai dan pengajar yang membina jamaah dan santri." },
-  { icon: "building", title: "Pimpinan pondok & sekolah", text: "Kepala sekolah, mudir, dan pengelola lembaga pendidikan Islam." },
-  { icon: "users", title: "Pemimpin lembaga dakwah", text: "Pengurus organisasi dakwah, kajian, dan komunitas umat." },
-  { icon: "heart", title: "Aktivis kemanusiaan", text: "Pimpinan organisasi sosial, relawan, dan filantropi." },
+  { title: "Ustadz & ustadzah", text: "Para dai dan pengajar yang membina jamaah dan santri." },
+  { title: "Pimpinan pondok & sekolah", text: "Kepala sekolah, mudir, dan pengelola lembaga pendidikan Islam." },
+  { title: "Pemimpin lembaga dakwah", text: "Pengurus organisasi dakwah, kajian, dan komunitas umat." },
+  { title: "Aktivis kemanusiaan", text: "Pimpinan organisasi sosial, relawan, dan filantropi." },
 ];
 
 const flow = [
   { title: "Isi formulir pendaftaran", text: "Lengkapi formulir online dengan data diri, lembaga, dan kota Anda. Tim AHC menghubungi Anda dengan info batch dan syarat beasiswa." },
-  { title: "Seleksi & konfirmasi", text: "Prioritas bagi ustadz/ah dan pemimpin lembaga dakwah, pendidikan, dan kemanusiaan." },
   { title: "Ikuti kelas AHC", text: "Workshop agile coaching bersama Master Coach, tatap muka di chapter kota Anda." },
   { title: "Jadi penggerak chapter", text: "Alumni melanjutkan ke kredensial internasional dan menggerakkan chapter di daerahnya." },
 ];
@@ -70,12 +69,11 @@ const pics = Object.keys(ahcEventImg).sort();
   <section class="section bg-paper">
     <div class="wrap">
       <div class="head center">
-        <span class="eyebrow">Untuk siapa</span>
         <h2 class="h-lg">Penerima Beasiswa</h2>
       </div>
       <ul class="who">
         {who.map((w) => (
-          <li data-reveal><Icon name={w.icon} size={30} /><h3>{w.title}</h3><p class="muted">{w.text}</p></li>
+          <li data-reveal><h3>{w.title}</h3><p class="muted">{w.text}</p></li>
         ))}
       </ul>
     </div>
@@ -89,8 +87,7 @@ const pics = Object.keys(ahcEventImg).sort();
         <Img src={photo["group-five"]} alt="Coach Daru bersama para asatidz" widths={[500, 900]} sizes="(min-width: 900px) 25vw, 50vw" class="mono b" />
       </div>
       <div>
-        <span class="eyebrow">Yang Anda bawa pulang</span>
-        <h2 class="h-lg" style="margin:1rem 0 2rem">Hasil<br />Program</h2>
+        <h2 class="h-lg" style="margin:0 0 2rem">Hasil<br />Program</h2>
         <ul class="outs">
           {ahc.outcomes.map((o) => (
             <li><Icon name="check" size={18} /><div><h3>{o.title}</h3><p class="muted">{o.text}</p></div></li>
@@ -125,10 +122,9 @@ const pics = Object.keys(ahcEventImg).sort();
     <div class="wrap">
       <div class="head split">
         <div>
-          <span class="eyebrow">Alur pendaftaran</span>
-          <h2 class="h-lg" style="margin-top:1rem">Cara Mendaftar</h2>
+          <h2 class="h-lg">Cara Mendaftar</h2>
         </div>
-        <p class="lead">Kuota beasiswa dibagi per batch dan per chapter. Daftarkan diri atau lembaga Anda lebih awal.</p>
+        <p class="lead">Pendaftaran beasiswa lewat formulir online. Lembaga yang ingin membuka chapter di kotanya bisa menghubungi kami lewat WhatsApp.</p>
       </div>
       <ol class="flow">
         {flow.map((f, i) => (
@@ -146,8 +142,7 @@ const pics = Object.keys(ahcEventImg).sort();
   <section class="section-sm">
     <div class="wrap">
       <div class="head center">
-        <span class="eyebrow">Dokumentasi batch AHC</span>
-        <h2 class="h-md">Dari kelas ke kelas, kota ke kota</h2>
+        <h2 class="h-md">Dokumentasi batch AHC</h2>
       </div>
       <ul class="tiles">
         {pics.map((p) => (
@@ -191,7 +186,6 @@ const pics = Object.keys(ahcEventImg).sort();
 
   .who { display: grid; gap: 1rem; }
   .who li { display: grid; gap: 0.6rem; padding: 1.6rem; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
-  .who :global(svg) { color: var(--gold-deep); margin-bottom: 0.4rem; }
   .who h3 { font-size: 1.3rem; }
   .who p { font-size: 0.9rem; }
   @media (min-width: 640px) { .who { grid-template-columns: repeat(2, 1fr); } }
@@ -227,7 +221,7 @@ const pics = Object.keys(ahcEventImg).sort();
   .flow p { font-size: 0.9rem; }
   .btn-row.center { justify-content: center; }
   @media (min-width: 640px) { .flow { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .flow { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1000px) { .flow { grid-template-columns: repeat(3, 1fr); } }
 
   /* Every photo shares one fixed height and keeps its natural width (full frame, no cropping);
      rows are centred so the ragged ends stay balanced. */
