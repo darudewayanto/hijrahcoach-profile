@@ -13,6 +13,9 @@ import { awards } from "../data/site";
       <Img src={photo["accred-program"]} alt="Accredited Program: ICF Level 1, ICP-ACC, MiND Practitioner Certification" widths={[481]} sizes="(min-width: 960px) 430px, 100vw" format="png" />
       <Img src={photo["accred-master"]} alt="Master Credential: Master Certified Coach, ICE-AC, MyBrain Master Practitioner" widths={[483]} sizes="(min-width: 960px) 430px, 100vw" format="png" />
     </div>
+    <div class="orgs">
+      <Img src={photo["accred-orgs"]} alt="Accredited by International Coaching Federation, ICAgile, and MyBrain" widths={[1014]} sizes="(min-width: 760px) 620px, 100vw" format="png" />
+    </div>
     <ul class="awards">
       {awards.map((a) => <li>{a}</li>)}
     </ul>
@@ -27,6 +30,8 @@ import { awards } from "../data/site";
   .strip { display: grid; grid-template-columns: 1fr; justify-items: center; gap: 1.5rem; padding-top: 0.5rem; max-width: 900px; margin-inline: auto; }
   @media (min-width: 760px) { .strip { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
   .strip :global(img) { width: 100%; max-width: 430px; height: auto; }
+  .orgs { max-width: 620px; margin: 2.2rem auto 0; }
+  .orgs :global(img) { width: 100%; height: auto; }
   .awards { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.8rem; }
   .awards li { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 0.9rem; border: 1px solid rgba(150, 115, 79, 0.4); border-radius: 999px; color: var(--gold-deep); }
 </style>
