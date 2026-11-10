@@ -36,8 +36,11 @@ const pics = Object.keys(ahcEventImg).sort();
         <a class="btn btn-line" href={wa("ahcPartner")} target="_blank" rel="noopener">Buka chapter di kota Anda</a>
       </div>
       <div class="cce">
-        <Img src={accredImg["icf-cce"]} alt="ICF Continuing Coach Education (CCE)" width={72} loading="eager" />
-        <p>Program Agile Hijrah Coaching diakreditasi internasional oleh <b>ICF (International Coaching Federation) CCE</b></p>
+        <span class="cce-logos">
+          <Img src={accredImg["mind-accredited"]} alt="MyBrain MiND Accredited Program" width={72} loading="eager" />
+          <Img src={accredImg["icf-cce"]} alt="ICF Continuing Coach Education (CCE)" width={72} loading="eager" />
+        </span>
+        <p>Program Agile Hijrah Coaching diakreditasi internasional oleh <b>ICF (International Coaching Federation) CCE</b> dan <b>MyBrain MiND Accredited Program</b></p>
       </div>
     </div>
   </section>
@@ -168,11 +171,12 @@ const pics = Object.keys(ahcEventImg).sort();
   .h-inner .lead { margin-inline: auto; }
   .h-inner .btn-row { justify-content: center; }
   /* ICF CCE accreditation strip under the hero buttons. */
-  .cce { display: flex; align-items: center; gap: 1rem; margin-top: 0.8rem; padding: 0.7rem 1.4rem 0.7rem 0.7rem; border: 1px solid var(--line-dark); border-radius: 999px; background: rgba(255, 255, 255, 0.04); text-align: left; max-width: 640px; }
+  .cce { display: flex; align-items: center; gap: 1rem; margin-top: 0.8rem; padding: 0.7rem 1.4rem 0.7rem 0.7rem; border: 1px solid var(--line-dark); border-radius: 999px; background: rgba(255, 255, 255, 0.04); text-align: left; max-width: 720px; }
+  .cce-logos { display: flex; gap: 0.5rem; flex: none; }
   .cce :global(img) { width: 64px; height: 64px; flex: none; }
   .cce p { font-size: 0.92rem; line-height: 1.45; color: rgba(255, 255, 255, 0.82); }
   .cce b { color: #fff; font-weight: 700; }
-  @media (max-width: 560px) { .cce { border-radius: 18px; padding: 0.8rem; } .cce :global(img) { width: 52px; height: 52px; } }
+  @media (max-width: 560px) { .cce { flex-direction: column; text-align: center; border-radius: 18px; padding: 1rem; } .cce :global(img) { width: 56px; height: 56px; } }
 
   .stats-wrap { margin-top: -3rem; position: relative; z-index: 3; }
   .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -36px rgba(21, 20, 19, 0.5); }
