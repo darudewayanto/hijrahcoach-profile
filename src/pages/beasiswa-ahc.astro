@@ -40,7 +40,7 @@ const pics = Object.keys(ahcEventImg).sort();
           <Img src={accredImg["mind-accredited"]} alt="MyBrain MiND Accredited Program" width={125} loading="eager" />
           <Img src={accredImg["icf-cce"]} alt="ICF Continuing Coach Education (CCE)" width={125} loading="eager" />
         </span>
-        <p>Program Agile Hijrah Coaching diakreditasi internasional oleh <b>ICF (International Coaching Federation) CCE</b> dan <b>MyBrain MiND Accredited Program</b></p>
+        <p><span>Program Agile Hijrah Coaching diakreditasi internasional oleh</span> <span><b>ICF (International Coaching Federation) CCE</b> dan</span> <span><b>MyBrain MiND Accredited Program</b></span></p>
       </div>
     </div>
   </section>
@@ -176,6 +176,8 @@ const pics = Object.keys(ahcEventImg).sort();
   .cce :global(img) { width: 125px; height: 125px; flex: none; }
   .cce p { font-size: 0.92rem; line-height: 1.45; color: rgba(255, 255, 255, 0.82); }
   .cce b { color: #fff; font-weight: 700; }
+  /* Three fixed caption lines from wider screens up; on phones the text wraps naturally. */
+  @media (min-width: 561px) { .cce p span { display: block; } }
   @media (max-width: 560px) { .cce { flex-direction: column; text-align: center; border-radius: 18px; padding: 1rem; } .cce :global(img) { width: 110px; height: 110px; } }
 
   .stats-wrap { margin-top: -3rem; position: relative; z-index: 3; }
